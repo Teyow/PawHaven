@@ -1,77 +1,66 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left screen -->
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <div class="col mx-5 p-5">
+                <div class="d-flex justify-content-center">
+                    <div class="display-4 text-align-center px-2" style="color: #FFAF00"> Create your</div>
+                    <div class="display-4 text-align-center" style="color: #22355C">Account</div>
                 </div>
+
+                <form>
+                    <div class="form-group my-3">
+                        <input type="text" class="form-control form-control-lg rounded-pill" style=""
+                            id="exampleInputFname" aria-describedby="" placeholder="First Name">
+                    </div>
+                    <div class="form-group my-3">
+                        <input type="text" class="form-control form-control-lg rounded-pill" style=""
+                            id="exampleInputLname" aria-describedby="" placeholder="Last Name">
+                    </div>
+                    <div class="form-group my-3">
+                        <input type="text" class="form-control form-control-lg rounded-pill" style=""
+                            id="exampleInputAddress" aria-describedby="" placeholder="Address">
+                    </div>
+                    <div class="form-group my-3">
+                        <input type="text" class="form-control form-control-lg rounded-pill" style=""
+                            id="exampleInputContact" aria-describedby="" placeholder="Contact">
+                    </div>
+                    <div class="form-group my-3">
+                        <input type="text" class="form-control form-control-lg rounded-pill" style=""
+                            id="exampleInputEmail1" aria-describedby="" placeholder="Email">
+                    </div>
+                    <div class="form-group my-3">
+                        <input type="password" class="form-control form-control-lg rounded-pill"
+                            style="" id="exampleInputPassword1" aria-describedby=""
+                            placeholder="Password">
+                    </div>
+                    <div class="form-group my-3">
+                        <input type="password" class="form-control form-control-lg rounded-pill"
+                            style="" id="exampleInputPassword2" aria-describedby=""
+                            placeholder="Re-Password">
+                    </div>
+
+                    <div class="d-flex justify-content-center my-3">
+                        <button type="submit" style="background-color: #22355C; color:white"
+                            class="btn btn-lg rounded-pill w-50 ">Register</button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- right screen -->
+            <div class="col">
+                <picture>
+                    <img src="{{ URL::to('/') }}/img/Shelter.png" alt="Responsive image" class="img-fluid shelter">
+                </picture>
             </div>
         </div>
     </div>
-</div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="page-footer font small teal pt-5">
+        <div class="footer-pawshaven text-center py-3 text-light" style="background-color: #22355C;">Paws Haven © 2022</div>
+    </footer>
 @endsection

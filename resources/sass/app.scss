@@ -5,4 +5,12 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.shelter{
+    width: 3000px;
+    height: 300px;
+}
+.form-container{
+    right: 50rem;
+}
