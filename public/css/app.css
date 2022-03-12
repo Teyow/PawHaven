@@ -11286,3 +11286,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.shelter {
+  width: 3000px;
+  height: 300px;
+}
+
+.form-container {
+  right: 50rem;
+}
