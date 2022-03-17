@@ -1,94 +1,134 @@
 @extends('layouts.app')
+@section('title', '| Register')
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <!-- left screen -->
 
-            <div class="col mx-5 p-5 mt-5">
-                <div class="d-flex flex-column align-items-center justify-content-center">
-                    <div class="d-flex">
-                        <div class="display-4 text-align-center px-2" style="color: #FFAF00"> Create your</div>
-                        <div class="display-4 text-align-center" style="color: #22355C">Account</div>
-                    </div>
-
-                    <form class="w-75" action="{{ route('register') }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group my-3">
-                            <input type="text" name="fname" class="form-control form-control-lg rounded-pill" style=""
-                                id="fname" aria-describedby="" placeholder="First Name*">
-                            @error('fname')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="form-group my-3">
-                            <input type="text" name="lname" class="form-control form-control-lg rounded-pill" style=""
-                                id="lname" aria-describedby="" placeholder="Last Name*">
-                            @error('lname')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="form-group my-3">
-                            <input type="text" name="address" class="form-control form-control-lg rounded-pill" style=""
-                                id="address" aria-describedby="" placeholder="Address*">
-                            @error('address')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="form-group my-3">
-                            <input type="text" name="contactNo" class="form-control form-control-lg rounded-pill" style=""
-                                id="cnum" aria-describedby="" placeholder="Contact*">
-                            @error('contactNo')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="form-group my-3">
-                            <input type="text" name="email" class="form-control form-control-lg rounded-pill" style=""
-                                id="email" aria-describedby="" placeholder="Email*">
-                            @error('email')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="form-group my-3">
-                            <input type="password" name="pass" class="form-control form-control-lg rounded-pill" style=""
-                                id="pass" aria-describedby="" placeholder="Password*">
-                            @error('pass')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="form-group my-3">
-                            <input type="password" name="cpass" class="form-control form-control-lg rounded-pill" style=""
-                                id="cpass" aria-describedby="" placeholder="Re-Password*">
-                            @error('cpass')
-                                {{ $message }}
-                            @enderror
-                        </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file" id="file">
-                        </div>
-                        <div class="d-flex justify-content-center my-3">
-                            <button type="submit" style="background-color: #22355C; color:white"
-                                class="btn btn-lg rounded-pill w-50 " id="submit">Register</button>
-                        </div>
-
-                    </form>
+    <div class="container">
+        <div class="row login-container">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 d-none d-lg-block">
+                <div class="img-login">
+                    <img src="{{ asset('img/register.png') }}" alt="">
                 </div>
             </div>
-            <!-- right screen -->
-            <div class="col">
-                <div class="d-flex justify-content-center align-items-center">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mt-5">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <h1 class="page-heading">Welcome! </h1>
+                        <p class="page-subtitle mb-4">Register your account.</p>
+                        <div class="col-sm">
+                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                                @csrf
 
-                    <img src="{{ URL::to('/') }}/img/Shelter.png" alt="Responsive image" class="img-fluid">
+                                <div class="form-group mb-3 input-form d-flex justify-content-start flex-column">
+                                    <input id="fname" type="text" class="form-control box-input-form " name="fname"
+                                        autofocus="" placeholder="First Name" value={{ old('fname') }}>
+                                    <i class="fas fa-user"></i>
+
+                                    @error('fname')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3 input-form d-flex justify-content-start flex-column">
+                                    <input id="lname" type="text" class="form-control box-input-form " name="lname"
+                                        placeholder="Last Name" value={{ old('lname') }}>
+                                    <i class="fas fa-user"></i>
+
+                                    @error('lname')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3 input-form d-flex justify-content-start flex-column">
+                                    <input id="address" type="text" class="form-control box-input-form " name="address"
+                                        placeholder="Address" value={{ old('address') }}>
+                                    <i class="fas fa-home"></i>
+
+                                    @error('address')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3 input-form d-flex justify-content-start flex-column">
+                                    <input id="cnum" type="text" class="form-control box-input-form " name="contactNo"
+                                        placeholder="Contact Number" value={{ old('contactNo') }}>
+                                    <i class="fas fa-phone"></i>
+
+                                    @error('contactNo')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3 input-form d-flex justify-content-start flex-column">
+                                    <input id="email" type="text" class="form-control box-input-form " name="email"
+                                        placeholder="Email" value="{{ old('email') }}">
+                                    <i class="fas fa-envelope"></i>
+
+                                    @error('email')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group  mb-3 input-form d-flex justify-content-start flex-column">
+                                    <input id="pass" type="password" class="form-control box-input-form " name="pass"
+                                        placeholder="Password">
+                                    <i class="fas fa-lock"></i>
+
+                                    @error('pass')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group mb-3 input-form d-flex justify-content-start flex-column">
+                                    <input id="cpass" type="password" class="form-control box-input-form " name="cpass"
+                                        placeholder="Confirm password">
+                                    <i class="fas fa-lock"></i>
+
+                                    @error('cpass')
+                                        <small class="text-danger">
+                                            {{ $message }}
+                                        </small>
+                                    @enderror
+                                </div>
+
+                                <div class="custom-file" style="text-align: left; border-bottom: 1px solid #dedede;">
+                                    <div class="row d-flex d-column">
+                                        <div class="col-12"> <i class="fas fa-image"
+                                                style="font-size: 20px; margin: 7px 0px 7px 20px;color: #dedede;"></i>
+                                            <small id="label profile-pic" class="form-text text-muted profile-pic-label"
+                                                style="font-size: 0.9rem; margin-left: 10px;">Profile Picture</small>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="file" class="custom-file-input mt-3" name="file" id="file"
+                                                placeholder="Profile Picture">
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                                <button type="submit" class="btn w-100 text-white mt-3 mb-5"
+                                    style="background-color:#7EC8DF;">Register</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    </div>
-    <!-- Footer -->
-    <footer class="page-footer font small teal mt-4">
-        <div class="footer-pawshaven text-center py-3 text-light" style="background-color: #22355C;">Paws Haven © 2022</div>
-    </footer>
 
     <script>
         $(document).ready(() => {

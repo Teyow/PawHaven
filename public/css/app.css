@@ -11294,3 +11294,324 @@ textarea.form-control-lg {
 .form-container {
   right: 50rem;
 }
+/*primary color = #7EC8DF; 
+secondary color =  #66E7CE; */
+
+body {
+  font-family: 'Montserrat', 'sans-serif' !important;
+  font-size: 1rem;
+  overflow-x: hidden;
+}
+
+.base-color {
+  color: #7EC8DF;
+}
+
+.homepage {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/pexels-recep-fatih-kaya-10094979.jpg');
+  background-attachment: static;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.homepage-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.hp-title {
+  font-weight: 700;
+}
+
+.hp-button {
+  background-color: #66E7CE;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem;
+}
+
+.features-section {
+  text-align: center;
+
+}
+
+.features-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  height: 150px;
+  width: 150px;
+  background-color: #7EC8DF;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.features-img {
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.features-heading {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #66E7CE;
+
+}
+
+.features-caption {
+  font-size: 1rem;
+  margin: 0.5rem 5rem;
+}
+
+.stats-section {
+  background-color: #7EC8DF;
+
+}
+
+.stats-container {
+
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.stats-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.stats-number {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.stats-caption {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.stats-icon {
+  text-shadow: 0 0 3px #66E7CE;
+  font-size: 8rem;
+}
+
+.gallery-image {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.img-box {
+  box-sizing: content-box;
+  margin: 10px;
+  height: 250px;
+  width: 350px;
+  overflow: hidden;
+  display: inline-block;
+  color: white;
+  background-color: white;
+}
+
+.img-content {
+  height: 250px;
+  width: 350px;
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+}
+
+.img-content:hover {
+  transform: scale(1.3);
+}
+
+.page-heading {
+  color: #7EC8DF;
+  font-weight: 700;
+  text-align: left;
+}
+
+.page-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #666666;
+  text-align: left;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*height: 100vh;*/
+  text-align: end;
+}
+
+.img-login img {
+  height: 100%;
+  width: 100%;
+}
+
+
+.input-form {
+  position: relative;
+  display: inline-block;
+}
+
+
+.input-form input {
+  border: 0;
+  border-bottom: 1px solid #dedede;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+.input-form i {
+  position: absolute;
+  font-size: 20px;
+  color: #dedede;
+  margin: 7px 0px 7px 20px;
+}
+
+.input-form input:focus {
+  border-color: #7EC8DF;
+  border-width: 2px;
+  box-shadow: none !important;
+}
+
+.input-form input:focus+i {
+  color: #7EC8DF;
+}
+
+.box-input-form {
+  padding-left: 50px !important;
+}
+
+.pw-link {
+  text-align: end;
+  color: #7EC8DF;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+
+  .homepage,
+  .homepage-content {
+    height: 50vh;
+  }
+
+  .features-caption {
+    margin: 0rem;
+  }
+
+  .feature-container {
+    padding: 0 2rem;
+    margin: 2rem 0;
+  }
+
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+  .homepage,
+  .homepage-content {
+    height: 50vh;
+  }
+
+  .features-caption {
+    margin: 0rem;
+  }
+
+  .feature-container {
+    padding: 0 2rem;
+    margin: 2rem 0;
+  }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+  .homepage,
+  .homepage-content {
+    height: 55vh;
+  }
+
+  .features-caption {
+    margin: 0rem;
+  }
+
+  .features-section,
+  .features-content {
+    height: 80vh;
+  }
+
+  .features-section {
+    margin-bottom: 2rem;
+  }
+
+  .feature-container {
+    padding: 0rem 2rem;
+    margin: 2rem 0;
+  }
+
+  .stats-icon {
+    font-size: 6rem;
+  }
+
+
+
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .features-section {
+    height: 100vh;
+  }
+
+  .features-content {
+    height: 90vh;
+  }
+
+  .login-container {
+    height: 90vh;
+  }
+
+
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .features-section {
+    height: 100vh;
+  }
+
+  .features-content {
+    height: 90vh;
+  }
+
+  .login-container {
+    height: 90vh;
+  }
+
+}
