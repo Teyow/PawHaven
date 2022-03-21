@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center mb-4 mt-4">
-                    <a href="#" type="button" class="btn rounded btn-sm mr-3 btn-adopt-visit"
+                    <a href="/adoption/{{ $pets->id }}/schedule" type="button" class="btn rounded btn-sm mr-3 btn-adopt-visit"
                         style="background-color: #7EC8DF">Schedule a Visit</a>
                     <a href="#" type="button" class="btn rounded btn-sm btn-adopt-visit"
                         style="background-color: #7EC8DF">Inquire for Adoption</a>

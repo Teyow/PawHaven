@@ -26,5 +26,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/adoption', AdminAdoption::class);
+Route::get('/adoption/{id}/schedule', [AdminAdoption::class, 'schedule']);
+Route::get('/adoption/{id}/schedule/success', [AdminAdoption::class, 'success']);
 Route::resource('/visitation', VisitationController::class);
 Route::resource('/charity', CharityController::class);
+

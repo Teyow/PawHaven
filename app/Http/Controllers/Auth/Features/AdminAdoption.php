@@ -97,19 +97,19 @@ class AdminAdoption extends Controller
                     $imgData[] = $name;
                 }
 
-               //$fileImage = new PetProfile();
-               //$fileImage->pet_image = json_encode($imgData);
-               //$fileImage->save();
+                //$fileImage = new PetProfile();
+                //$fileImage->pet_image = json_encode($imgData);
+                //$fileImage->save();
 
-               $petProfile = PetProfile::create([
-                'pet_id' => $pet->id,
-                'size' => $request->input('size'),
-                'color' => $request->input('color'),
-                'personality' => $request->input('personality'),
-                'healthInfo' => json_encode($request->input('healthInfo')),
-                'about' => $request->input('about'),
-                'pet_image' => json_encode($imgData)
-            ]);
+                $petProfile = PetProfile::create([
+                    'pet_id' => $pet->id,
+                    'size' => $request->input('size'),
+                    'color' => $request->input('color'),
+                    'personality' => $request->input('personality'),
+                    'healthInfo' => json_encode($request->input('healthInfo')),
+                    'about' => $request->input('about'),
+                    'pet_image' => json_encode($imgData)
+                ]);
 
                 return redirect('/adoption/create')->with('success', 'Pet has been added!');
             }
@@ -162,5 +162,23 @@ class AdminAdoption extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function schedule($id)
+    {
+        return view('features.scheduleavisit', [
+            'pets' => Pet::findOrFail($id),
+            'petprofiles' => PetProfile::where('pet_id', $id)->get(),
+        ]);
+    }
+
+    public function success($id)
+    {
+        return view('features.successschedule', [
+
+            'pets' => Pet::findOrFail($id),
+            'petprofiles' => PetProfile::where('pet_id', $id)->get(),
+
+        ]);
     }
 }
