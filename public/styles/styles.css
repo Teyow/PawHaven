@@ -1,0 +1,147 @@
+/*primary color = #7EC8DF; 
+secondary color =  #66E7CE; 
+accent color = #005B97; 
+light grey = #A9A9A9*/
+
+body{
+    color: #342E37;
+}
+.multisteps-form__progress {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.multisteps-form__progress-btn {
+    transition-property: all;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    position: relative;
+    padding-top: 20px;
+    color: rgba(108, 117, 125, 0.7);
+    text-indent: -9999px;
+    border: none;
+    background-color: transparent;
+    outline: none !important;
+    cursor: pointer;
+}
+
+@media (min-width: 500px) {
+    .multisteps-form__progress-btn {
+        text-indent: 0;
+    }
+}
+
+.multisteps-form__progress-btn:before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    width: 13px;
+    height: 13px;
+    content: '';
+    transform: translateX(-50%);
+    transition: all 0.15s linear 0s, transform 0.15s cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.multisteps-form__progress-btn:after {
+    position: absolute;
+    top: 5px;
+    left: calc(-50% - 13px / 2);
+    transition-property: all;
+    transition-duration: 0.15s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    display: block;
+    width: 100%;
+    height: 2px;
+    content: '';
+    background-color: currentColor;
+    z-index: 1;
+}
+
+.multisteps-form__progress-btn:first-child:after {
+    display: none;
+}
+
+.multisteps-form__progress-btn.js-active {
+    color: #7EC8DF;
+}
+
+.multisteps-form__progress-btn.js-active:before {
+    transform: translateX(-50%) scale(1.2);
+    background-color: currentColor;
+}
+
+.multisteps-form__form {
+    position: relative;
+}
+
+.multisteps-form__panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.multisteps-form__panel.js-active {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+}
+
+.imgPreview img {
+    padding: 8px;
+    max-width: 200px;
+} 
+
+
+
+.pet-name{
+    color:#7EC8DF;
+    font-weight: 600;
+}
+
+.pet-breed{
+    font-weight: 500;
+    color:#005B97;
+}
+
+.btn-adopt-visit{
+    background-color: #7EC8DF;
+    border: #7EC8DF;
+    color: #fff;
+}
+
+.btn-adopt-visit:hover{
+    background-color: #fff !important;
+    border: 1px solid #7EC8DF;
+    color: #7EC8DF;
+}
+
+.pet-detail{
+    color: #A9A9A9;
+}
+
+.pet-icon{
+    font-size: 1.5rem; 
+    color:#7EC8DF
+}
+
+.pet-info-header{
+    color: #005B97;
+    font-weight: 700;
+}
+
+.pet-info-heading{
+    color: #7EC8DF;
+    font-weight: 500;
+}

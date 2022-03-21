@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $pet = DB::table('pets')
+            ->join('pet_profiles', 'pets.id', '=', 'pet_profiles.pet_id')
+            ->select('pets.*', 'pet_profiles.*')
+            ->where('pets.is_adopted', 0)
+            ->paginate(4);
+
+        return view('home', [
+            'pet' => $pet
+        ]);
     }
 }

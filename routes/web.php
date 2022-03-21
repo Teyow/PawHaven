@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\Features\AdminAdoption;
+use App\Http\Controllers\Auth\Features\AdoptionController;
+use App\Http\Controllers\Auth\Features\CharityController;
+use App\Http\Controllers\Auth\Features\DashboardController;
+use App\Http\Controllers\Auth\Features\VisitationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +25,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/adoption', AdminAdoption::class);
+Route::resource('/visitation', VisitationController::class);
+Route::resource('/charity', CharityController::class);
