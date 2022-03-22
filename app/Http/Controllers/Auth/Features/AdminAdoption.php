@@ -138,7 +138,10 @@ class AdminAdoption extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('features.editpet', [
+            'pets' => Pet::findOrFail($id),
+            'petprofiles' => PetProfile::where('pet_id', $id)->get(),
+        ]);
     }
 
     /**
