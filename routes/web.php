@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Auth\Features\AdminAdoption;
-use App\Http\Controllers\Auth\Features\AdoptionController;
 use App\Http\Controllers\Auth\Features\CharityController;
 use App\Http\Controllers\Auth\Features\DashboardController;
 use App\Http\Controllers\Auth\Features\VisitationController;
