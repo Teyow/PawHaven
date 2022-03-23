@@ -59,7 +59,11 @@
                 </div>
             </div>
             <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-                insert calendar here
+                <div id="calendar"></div>
+                <input type="text" value="{{ $pets->id }}" id="petId" hidden>
+
+                <script src="{{ asset('js/calendar.js') }}">
+                </script>
             </div>
         </div>
     </div>

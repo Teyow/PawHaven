@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Auth\Features;
 use App\Http\Controllers\Controller;
 use App\Models\Pet;
 use App\Models\PetProfile;
+use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminAdoption extends Controller
 {
@@ -169,6 +172,7 @@ class AdminAdoption extends Controller
 
     public function schedule($id)
     {
+        $testString = 'schedule a visit';
         return view('features.scheduleavisit', [
             'pets' => Pet::findOrFail($id),
             'petprofiles' => PetProfile::where('pet_id', $id)->get(),
@@ -177,11 +181,25 @@ class AdminAdoption extends Controller
 
     public function success($id)
     {
+        $latest = DB::table('visits')
+            ->latest('created_at', 'desc')
+            ->first();
+
         return view('features.successschedule', [
 
             'pets' => Pet::findOrFail($id),
             'petprofiles' => PetProfile::where('pet_id', $id)->get(),
+            'visit_info' => $latest
+        ]);
+    }
 
+    public function saveDate(Request $request)
+    {
+        $visit = Visit::create([
+            'user_id' => 1,
+            'date_start' => $request->date_start,
+            'date_end' => $request->date_end,
+            'is_approved' => false,
         ]);
     }
 }

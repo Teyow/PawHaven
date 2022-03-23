@@ -77,7 +77,9 @@
                         <hr>
                         <dl class="row">
                             <dt class="col-sm-2">Date</dt>
-                            <dd class="col-sm-10">insert date</dd>
+                            <dd class="col-sm-10">
+                                <div id="date" class="p">date</div>
+                            </dd>
 
                             <dt class="col-sm-2">Time</dt>
                             <dd class="col-sm-10">
@@ -90,7 +92,8 @@
                             culpa, sunt dolorem corporis iste magnam! Adipisci, temporibus.
                         </div>
 
-                        <h6 style="color: #005B97; font-weight: 500;" class="mt-4">Please bring the following documents during your visit, if you have already considered adopting the pet.
+                        <h6 style="color: #005B97; font-weight: 500;" class="mt-4">Please bring the following
+                            documents during your visit, if you have already considered adopting the pet.
                         </h6>
                         <hr>
 
@@ -98,7 +101,7 @@
                             <dl class="row">
                                 <dt class="col-sm-4">Proof of Identity</dt>
                                 <dd class="col-sm-8">Insert type of ids</dd>
-    
+
                                 <dt class="col-sm-4">Proof of age</dt>
                                 <dd class="col-sm-8">
                                     Insert type of ids
@@ -108,11 +111,13 @@
                                 <dd class="col-sm-8">
                                     Insert type of ids
                                 </dd>
-    
+
                             </dl>
                         </div>
 
-
+                        <script src="{{ asset('js/success.js') }}">
+                            console.log(formatDate({{ $visit_info->date_start }}))
+                        </script>
 
 
 

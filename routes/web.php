@@ -30,3 +30,6 @@ Route::get('/adoption/{id}/schedule/success', [AdminAdoption::class, 'success'])
 Route::resource('/visitation', VisitationController::class);
 Route::resource('/charity', CharityController::class);
 
+
+//adding visit schedule
+Route::post('/addvisit', [AdminAdoption::class, 'saveDate']);
