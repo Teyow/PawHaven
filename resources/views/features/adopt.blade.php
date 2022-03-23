@@ -1,6 +1,6 @@
  <!-- Page Heading -->
  <div class="d-sm-flex align-items-center justify-content-between mb-4">
-     <h1 class="h3 mb-0 text-gray-800">Adopt a Pet</h1>
+     <h1 class="h3 mb-0 accent-color">Adopt a Pet</h1>
  </div>
 
  @if (count($pet) > 0)
@@ -19,8 +19,7 @@
                  <div class="card h-100">
                      <a href="{{ route('adoption.show', $pets->id) }}" class="stretched-link">
                          <img src="{{ asset('pet/' . $pets->id . '/' . $firstImage) }}"
-                             class="card-img-top img-responsive" alt="Pet Image"
-                             style="width: 100%; object-fit: cover; height:200px; background-color: black;"></a>
+                             class="card-img-top card-img-style img-responsive" alt="Pet Image"></a>
                      <div class="card-body">
                          <div class="row">
                              <div class="col-10">
@@ -53,7 +52,7 @@
  @else
      <div class="card mt-3">
          <div class="card-body" style="font-weight: 400; font-size: 1rem;">
-             There are no announcements to show.
+             There are no pets to show.
          </div>
      </div>
  @endif

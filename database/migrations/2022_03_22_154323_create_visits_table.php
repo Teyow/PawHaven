@@ -20,8 +20,8 @@ class CreateVisitsTable extends Migration
             $table->string('date_start');
             $table->string('date_end');
             $table->boolean('is_approved');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

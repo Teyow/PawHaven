@@ -24,7 +24,6 @@ class PetSeeder extends Seeder
             'age' => '3',
             'unit' => 'Month(s)',
             'is_adopted' => '0',
-            'is_visited' => '0',
         ]);
 
         DB::table('pet_profiles')->insert([

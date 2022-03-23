@@ -76,8 +76,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['pass']),
             'is_admin' => false,
-            'profile_pic' => 'no_image.jpg'
+            'profile_pic' => NULL,
         ]);
+
+        if (request()->hasFile('file')) {
+            $file = request()->file('file')->getClientOriginalName();
+            request()->file('file')->storeAs('profile_pics', $user->id . '/' . $file, ''); //does not save yet on the folder but saves on DB, sweet alert does not detect file even it has
+            $user->update(['profile_pic' => $file]);
+        } else {
+            $user->update(['profile_pic' => 'no_image.jpg']);
+        }
 
         return $user;
     }

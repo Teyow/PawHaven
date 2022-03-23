@@ -23,8 +23,8 @@ class CreatePetsTable extends Migration
             $table->string('age');
             $table->string('unit');
             $table->boolean('is_adopted');
-            $table->boolean('is_visited');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

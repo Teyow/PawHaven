@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <h3 style="color: #7EC8DF; font-weight: 500;">Visit Scheduled</h3>
+        <h3 class="page-subheadings-500">Visit Scheduled</h3>
         <div class="row mt-4 mb-5">
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-5">
                 <div class="card">

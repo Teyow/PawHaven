@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Pet extends Model
 {
     use HasFactory;
-    //use SoftDeletes;
+    use SoftDeletes;
 
     protected $table = 'pets';
 
@@ -22,7 +22,6 @@ class Pet extends Model
         'age',
         'unit',
         'is_adopted',
-        'is_visited',
     ];
 
     public function petProfiles(){

@@ -23,6 +23,7 @@ class CreatePetProfilesTable extends Migration
             $table->string('about');
             $table->string('pet_image');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('pet_id')
                 ->references('id')

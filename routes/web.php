@@ -27,6 +27,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/adoption', AdminAdoption::class);
 Route::get('/adoption/{id}/schedule', [AdminAdoption::class, 'schedule']);
 Route::get('/adoption/{id}/schedule/success', [AdminAdoption::class, 'success']);
+Route::post('/adoption/{id}/adopted/success', [AdminAdoption::class, 'adopted']);
+Route::post('/adoption/{id}/adopted/cancel', [AdminAdoption::class, 'cancelAdoption']);
+Route::post('/adoption/{id}/adopted/archive', [AdminAdoption::class, 'archivePet']);
 Route::resource('/visitation', VisitationController::class);
 Route::resource('/charity', CharityController::class);
 

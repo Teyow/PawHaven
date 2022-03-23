@@ -28,10 +28,29 @@ class HomeController extends Controller
             ->join('pet_profiles', 'pets.id', '=', 'pet_profiles.pet_id')
             ->select('pets.*', 'pet_profiles.*')
             ->where('pets.is_adopted', 0)
-            ->paginate(4);
+            ->where('pets.deleted_at', NULL)
+            ->paginate(8);
+
+        $totalusers = DB::table('users')
+            ->where('id', '!=', 1)
+            ->count();
+
+        $totalRegisteredPets = DB::table('pets')
+            ->where('deleted_at', NULL)
+            ->count();
+
+        $totalAdoptedPets = DB::table('pets')
+            ->join('pet_profiles', 'pets.id', '=', 'pet_profiles.pet_id')
+            ->select('pets.*', 'pet_profiles.*')
+            ->where('pets.is_adopted', 1)
+            ->where('pets.deleted_at', NULL)
+            ->count();
 
         return view('home', [
-            'pet' => $pet
+            'pet' => $pet,
+            'totalUsers' => $totalusers,
+            'totalRegisteredPets' => $totalRegisteredPets,
+            'totalAdoptedPets' => $totalAdoptedPets,
         ]);
     }
 }

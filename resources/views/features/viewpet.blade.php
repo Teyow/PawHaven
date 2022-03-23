@@ -8,16 +8,22 @@
             <div class="back">
                 @if (Auth::user()->is_admin == 1)
                     <a href="{{ route('adoption.index') }}" class="text-gray-900" style="text-decoration: none;">
-                        <i class="fas fa-chevron-left"></i> Back to results</a>
+                        <i class="fas fa-chevron-left"></i> Back</a>
                 @else
                     <a href="{{ route('home') }}" class="text-gray-900" style="text-decoration: none;">
-                        <i class="fas fa-chevron-left"></i> Back to results</a>
+                        <i class="fas fa-chevron-left"></i> Back</a>
                 @endif
 
             </div>
         </div>
 
-        <h3 style="color: #7EC8DF; font-weight: 600;">Meet {{ $pets->name }}</h3>
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 style="color: #7EC8DF; font-weight: 600;">Meet {{ $pets->name }}</h3>
+            <a href="{{ route('adoption.edit', $pets->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
+                class="fas fa-edit fa-sm text-white-50"></i> Edit Pet</a>
+        </div>
+
+     
 
         <!--LEFT PANEL -->
         <div class="row">
@@ -68,10 +74,9 @@
                 </div>
 
                 <div class="d-flex justify-content-center align-items-center mb-4 mt-4">
-                    <a href="/adoption/{{ $pets->id }}/schedule" type="button" class="btn rounded btn-sm mr-3 btn-adopt-visit"
-                        style="background-color: #7EC8DF">Schedule a Visit</a>
-                    <a href="#" type="button" class="btn rounded btn-sm btn-adopt-visit"
-                        style="background-color: #7EC8DF">Inquire for Adoption</a>
+                    <a href="/adoption/{{ $pets->id }}/schedule" type="button"
+                        class="btn rounded btn-sm mr-3 btn-accent-color">Schedule a
+                        Visit</a>
 
                 </div>
 
@@ -145,11 +150,18 @@
                             </div>
                             <div class="pet-info mt-4">
                                 <div class="pet-info-content">
+
+
                                     @foreach ($petprofiles as $profiles)
-                                        @foreach (json_decode($profiles->healthInfo) as $pethealthInfo)
-                                            <i class="fas fa-check mr-3 text-success"></i>{{ $pethealthInfo }} <br>
-                                        @endforeach
+                                        @if (json_decode($profiles->healthInfo) == null)
+                                            <p>There is no available health record for this pet.</p>
+                                        @else
+                                            @foreach (json_decode($profiles->healthInfo) as $pethealthInfo)
+                                                <i class="fas fa-check mr-3 text-success"></i>{{ $pethealthInfo }} <br>
+                                            @endforeach
+                                        @endif
                                     @endforeach
+
                                 </div>
                             </div>
 
@@ -167,16 +179,7 @@
                                     @if ($pets->is_adopted == 0)
                                         <i class="fas fa-times mr-2 text-danger"></i>Not yet Adopted
                                     @else
-                                        <i class="fas fa-times mr-2 text-success"></i>Adopted
-                                    @endif
-                                </div>
-
-                                <div class="pet-info-heading">Visitation Status</div>
-                                <div class="pet-info-content mb-2">
-                                    @if ($pets->is_visited == 0)
-                                        <i class="fas fa-times mr-2 text-success"></i>Available
-                                    @else
-                                        <i class="fas fa-times mr-2 text-danger"></i>Not Available
+                                        <i class="fas fa-check mr-2 text-success"></i>Adopted
                                     @endif
                                 </div>
                             </div>

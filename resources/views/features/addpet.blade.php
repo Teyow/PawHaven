@@ -6,7 +6,7 @@
     <div class="container-fluid" style="color: black;">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Add Pet</h1>
+            <h1 class="h3 mb-0 accent-color">Add Pet</h1>
         </div>
 
         @if (Session::get('success'))
@@ -45,7 +45,7 @@
                                 <div class="form-row mt-4">
                                     <div class="col-12 col-sm-6">
                                         <input class="multisteps-form__input form-control" type="text" placeholder="Name"
-                                            name="name" value="{{ old('name') }}" />
+                                            name="name" value="{{ old('name') }}" id="name" />
 
                                         @error('name')
                                             <small class="text-danger">{{ $message }}</small>
@@ -53,7 +53,7 @@
 
                                     </div>
                                     <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                        <select class="multisteps-form__select form-control" name="type">
+                                        <select class="multisteps-form__select form-control" name="type" id="type">
                                             <option disabled hidden selected>Type</option>
                                             <option value="Dog" {{ old('type') == 'Dog' ? 'selected' : '' }}>Dog</option>
                                             <option value="Cat" {{ old('type') == 'Cat' ? 'selected' : '' }}>Cat</option>
@@ -67,14 +67,14 @@
                                 <div class="form-row mt-4">
                                     <div class="col-12 col-sm-6">
                                         <input class="multisteps-form__input form-control" type="text" placeholder="Breed"
-                                            name="breed" value="{{ old('breed') }}" />
+                                            name="breed" value="{{ old('breed') }}" id="breed" />
 
                                         @error('breed')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
                                     </div>
                                     <div class="col-12 col-sm-6 mt-4 mt-sm-0">
-                                        <select class="multisteps-form__select form-control" name="gender">
+                                        <select class="multisteps-form__select form-control" name="gender" id="gender">
                                             <option disabled hidden selected>Gender</option>
                                             <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male
                                             </option>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="form-row mt-4">
                                     <div class="col-12 col-sm-6">
-                                        <select class="multisteps-form__select form-control" name="stage">
+                                        <select class="multisteps-form__select form-control" name="stage" id="stage">
                                             <option disabled hidden selected>Life Stage</option>
 
                                             <optgroup label="Cat">
@@ -126,7 +126,7 @@
                                         <div class="row">
                                             <div class="col">
                                                 <input class="multisteps-form__input form-control" type="number" name="age"
-                                                    placeholder="Age" value="{{ old('age') }}" />
+                                                    id="age" placeholder="Age" value="{{ old('age') }}" />
 
                                                 @error('age')
                                                     <small class="text-danger">{{ $message }}</small>
@@ -137,7 +137,7 @@
                                                 <div class="form-group row">
 
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="unit"
+                                                        <input class="form-check-input" type="radio" name="unit" id="unit"
                                                             value="Month(s)"
                                                             {{ old('unit') == 'Month(s)' ? 'checked' : '' }}>
                                                         <label class="form-check-label">Month(s)</label>
@@ -164,6 +164,8 @@
                                     </div>
                                 </div>
                                 <div class="button-row d-flex mt-4">
+                                    <a class="btn btn-outline-secondary mr-auto" href="{{ route('adoption.index') }}"
+                                        role="button" title="Next">Cancel</a>
                                     <button class="btn btn-primary ml-auto js-btn-next" type="button"
                                         title="Next">Next</button>
                                 </div>
@@ -197,7 +199,7 @@
 
                                     <div class="col-12 col-sm-6 mt-4 mt-sm-0">
                                         <input class="multisteps-form__input form-control" type="text" name="color"
-                                            placeholder="Color" value="{{ old('color') }}" />
+                                            id="color" placeholder="Color" value="{{ old('color') }}" />
 
                                         @error('color')
                                             <small class="text-danger">{{ $message }}</small>
@@ -207,7 +209,8 @@
                                 <div class="form-row mt-4">
                                     <div class="col">
                                         <input class="multisteps-form__input form-control" type="text" name="personality"
-                                            placeholder="Personality" value="{{ old('personality') }}" />
+                                            id="personality" placeholder="Personality"
+                                            value="{{ old('personality') }}" />
                                         <small class="form-text text-muted">Describe the pet (e.g. energetic,
                                             loyal, etc.)</small>
 
@@ -257,7 +260,7 @@
                                     <div class="col-12 col-sm-6 mt-4 mt-sm-0">
                                         <div class="form-group">
                                             <label for="">About</label>
-                                            <textarea class="form-control" name="about" id="" cols="5" rows="5">{{ old('about') }}</textarea>
+                                            <textarea class="form-control" name="about" id="about" cols="5" rows="5">{{ old('about') }}</textarea>
                                             <small class="form-text text-muted">Tell something about the pet
                                                 (e.g. history, attitude, etc.)</small>
                                         </div>
@@ -313,9 +316,100 @@
                             <h3 class="multisteps-form__title">Summary</h3>
                             <small class="form-text text-muted">Review the details of the pet to be registered.</small>
                             <div class="multisteps-form__content">
-                                <div class="form-row mt-4">
-                                    <textarea class="multisteps-form__textarea form-control" placeholder="Additional Comments and Requirements"></textarea>
+
+                                <!--
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Name:</dt>
+                                        <dd class="col-sm-10" id="nameDiv"></dd>
+
+                                        <dt class="col-sm-2">Type:</dt>
+                                        <dd class="col-sm-10" id="typeDiv"></dd>
+
+                                        <dt class="col-sm-2">Breed:</dt>
+                                        <dd class="col-sm-10" id="breedDiv"></dd>
+
+                                        <dt class="col-sm-2">Gender:</dt>
+                                        <dd class="col-sm-10" id="genderDiv"></dd>
+
+                                        <dt class="col-sm-2">Stage:</dt>
+                                        <dd class="col-sm-10" id="stageDiv"></dd>
+
+                                        <dt class="col-sm-2">Age:</dt>
+                                        <dd class="col-sm-10" id="ageDiv"></dd>
+                                    </dl>
+
+                                    <hr>
+
+                                    <dl class="row">
+                                        <dt class="col-sm-2">Size</dt>
+                                        <dd class="col-sm-10" id="sizeDiv"></dd>
+
+                                        <dt class="col-sm-2">Color:</dt>
+                                        <dd class="col-sm-10" id="colorDiv"></dd>
+
+                                        <dt class="col-sm-2">Personality:</dt>
+                                        <dd class="col-sm-10" id="personalityDiv"></dd>
+
+                                        <dt class="col-sm-2">Health Info:</dt>
+                                        <dd class="col-sm-10" id="healthInfoDiv"></dd>
+
+                                        <dt class="col-sm-2">About:</dt>
+                                        <dd class="col-sm-10" id="aboutDiv"></dd>
+
+                                       
+                                    </dl> -->
+                                <h6 class="page-subheadings-500 mt-3 mb-3">Pet Information</h6>
+                                <div class="container border-left-primary rounded py-2">
+                                    <div class="row">
+                                        <div class="col-sm-2 accent-color">Name:</div>
+                                        <div class="col-sm-10" id="nameDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Type:</div>
+                                        <div class="col-sm-10" id="typeDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Breed:</div>
+                                        <div class="col-sm-10" id="breedDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Gender:</div>
+                                        <div class="col-sm-10" id="genderDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Stage:</div>
+                                        <div class="col-sm-10" id="stageDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Age:</div>
+                                        <div class="col-sm-10" id="ageDiv"></div>
+                                    </div>
                                 </div>
+
+                                <hr>
+                                <h6 class="page-subheadings-500 mt-3 mb-3">Additional Information</h6>
+                                <div class="container border-left-primary rounded py-2">
+
+
+                                    <div class="row">
+                                        <div class="col-sm-2 accent-color">Size</div>
+                                        <div class="col-sm-10" id="sizeDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Color:</div>
+                                        <div class="col-sm-10" id="colorDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Personality:</div>
+                                        <div class="col-sm-10" id="personalityDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">Health Info:</div>
+                                        <div class="col-sm-10" id="healthInfoDiv"></div>
+
+                                        <div class="col-sm-2 accent-color">About:</div>
+                                        <div class="col-sm-10" id="aboutDiv"></div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <h6 class="page-subheadings-500 mt-3">Profile Image</h6>
+                                <small class="text-muted"><em>Kindly refer to the previous tab to verify the pictures to be uploaded.</em></small>
+
+
+
                                 <div class="button-row d-flex mt-4">
                                     <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
                                     <button class="btn btn-success ml-auto" type="submit" title="Submit">Submit</button>
@@ -328,6 +422,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(function() {
+            $('#name').on('input', function() {
+                $('#nameDiv').text($(this).val());
+            });
+
+            $('#breed').on('input', function() {
+                $('#breedDiv').text($(this).val());
+            });
+
+            $('#age').on('input', function() {
+                $('#ageDiv').text($(this).val());
+            });
+
+            $('#color').on('input', function() {
+                $('#colorDiv').text($(this).val());
+            });
+
+            $('#personality').on('input', function() {
+                $('#personalityDiv').text($(this).val());
+            });
+
+            $('#about').on('input', function() {
+                $('#aboutDiv').text($(this).val());
+            });
+
+            //let type = $("#type option:selected").text();
+            //console.log(type);
+        });
+    </script>
 
     <script>
         //DOM elements
@@ -443,7 +568,6 @@
         window.addEventListener('resize', setFormHeight, false);
     </script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script>
         $(function() {
             // Multiple images preview with JavaScript
