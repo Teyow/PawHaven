@@ -142,7 +142,7 @@
                         title: 'Warning!',
                         text: 'Some fields are empty!'
                     })
-                } else if ($('#file').empty() && once) {
+                } else if ($('#file').val() == '' && once) {
                     once = false
                     swal({
                         icon: 'warning',
