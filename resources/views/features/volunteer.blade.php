@@ -20,14 +20,15 @@
             @foreach ($programs as $program)
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('img/programs/' . $program->program_img) }}" class="card-img-top card-img-style img-responsive"
-                            alt="Pet Image">
+                        <img src="{{ asset('img/programs/' . $program->program_img) }}"
+                            class="card-img-top card-img-style img-responsive" alt="Pet Image">
                         <div class="card-body">
                             <h5 class="card-title page-subheadings-500">{{ $program->program_title }}</h5>
                             <p class="card-text">{{ $program->program_desc }}</p>
                             <div class="d-flex justify-content-end">
-                            <a href="{{ route('volunteer.show', $program->id) }}" class="btn btn-accent-color">Volunteer</a>
-                        </div>
+                                <a href="{{ route('volunteer.show', $program->id) }}"
+                                    class="btn btn-accent-color">Volunteer</a>
+                            </div>
                         </div>
                     </div>
                 </div>

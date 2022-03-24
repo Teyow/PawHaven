@@ -21,12 +21,13 @@
                         <h5 class="card-title">{{ $programs->program_title }}</h5>
                         <p class="card-text">{{ $programs->program_desc }}</p>
                     </div>
-                    <img class="card-img-bottom card-img-program-style img-responsive" src="{{ asset('img/programs/' . $programs->program_img) }}"
-                        alt="Card image cap">
+                    <img class="card-img-bottom card-img-program-style img-responsive"
+                        src="{{ asset('img/programs/' . $programs->program_img) }}" alt="Card image cap">
                 </div>
             </div>
             <div class="col-md-6">
 
+                <button id="btn">Test</button>
                 <div class="card">
                     <div class="card-body">
                         <form action="" method="post">
@@ -55,6 +56,9 @@
                         </form>
                     </div>
                 </div>
+
+                <script src={{ asset('js/volunteer.js') }}>
+                </script>
             </div>
         </div>
 
