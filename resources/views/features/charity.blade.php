@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <h5 class="card-title pet-info-header">Become a Volunteer</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="#" class="btn btn-accent-color">Volunteer</a>
+                            <a href="{{ route('volunteer.index') }}" class="btn btn-accent-color">Volunteer</a>
                         </div>
                     </div>
                 </div>

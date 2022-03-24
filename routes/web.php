@@ -4,7 +4,9 @@ use App\Http\Controllers\Auth\Features\AdminAdoption;
 use App\Http\Controllers\Auth\Features\CharityController;
 use App\Http\Controllers\Auth\Features\DashboardController;
 use App\Http\Controllers\Auth\Features\VisitationController;
+use App\Http\Controllers\Auth\Features\VolunteerController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,7 @@ Route::post('/adoption/{id}/adopted/cancel', [AdminAdoption::class, 'cancelAdopt
 Route::post('/adoption/{id}/adopted/archive', [AdminAdoption::class, 'archivePet']);
 Route::resource('/visitation', VisitationController::class);
 Route::resource('/charity', CharityController::class);
+Route::resource('/volunteer', VolunteerController::class);
 
 
 //adding visit schedule

@@ -166,3 +166,10 @@ body{
     width: 100%;
     height: 200px;
 }
+
+.card-img-program-style{
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    height: 300px;
+}
