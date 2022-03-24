@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\Features\AdminAdoption;
 use App\Http\Controllers\Auth\Features\CharityController;
 use App\Http\Controllers\Auth\Features\DashboardController;
+use App\Http\Controllers\Auth\Features\DonationController;
 use App\Http\Controllers\Auth\Features\VisitationController;
 use App\Http\Controllers\Auth\Features\VolunteerController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,11 @@ Route::post('/adoption/{id}/adopted/archive', [AdminAdoption::class, 'archivePet
 Route::resource('/visitation', VisitationController::class);
 Route::resource('/charity', CharityController::class);
 Route::resource('/volunteer', VolunteerController::class);
+Route::resource('/donate', DonationController::class);
+Route::get('/donate/view/{id}', [DonationController::class, 'showDonations'])->name('donate.user');
+Route::get('/donation/view/all', [DonationController::class, 'showAll'])->name('donate.alldonations');
+Route::post('/donation/approve/{id}', [DonationController::class, 'approve'])->name('donate.approve');
+Route::post('/donation/disapprove/{id}', [DonationController::class, 'disapprove'])->name('donate.disapprove');
 
 
 //adding visit schedule

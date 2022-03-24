@@ -18,7 +18,7 @@
                         <div class="card-body">
                             <h5 class="card-title pet-info-header">Make a Donation</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <a href="#" class="btn btn-accent-color">Donate</a>
+                            <a href="{{ route('donate.index') }}" class="btn btn-accent-color">Donate</a>
                         </div>
                     </div>
                 </div>
