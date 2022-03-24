@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\EditProfileController;
 use App\Http\Controllers\Auth\Features\AdminAdoption;
 use App\Http\Controllers\Auth\Features\CharityController;
 use App\Http\Controllers\Auth\Features\DashboardController;
@@ -41,6 +42,7 @@ Route::get('/donate/view/{id}', [DonationController::class, 'showDonations'])->n
 Route::get('/donation/view/all', [DonationController::class, 'showAll'])->name('donate.alldonations');
 Route::post('/donation/approve/{id}', [DonationController::class, 'approve'])->name('donate.approve');
 Route::post('/donation/disapprove/{id}', [DonationController::class, 'disapprove'])->name('donate.disapprove');
+Route::resource('/editprofile/{id}/edit', EditProfileController::class);
 
 
 //adding visit schedule

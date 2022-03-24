@@ -5,13 +5,6 @@
         <i class="fa fa-bars"></i>
     </button>
 
-    @php
-        $profile_pic = DB::table('users')
-            ->select('profile_pic')
-            ->where('id', Auth::user()->id)
-            ->first();
-    @endphp
-
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
         <div class="topbar-divider d-none d-sm-block"></div>
@@ -28,14 +21,14 @@
                         {{ Auth::user()->last_name }}</span>
                 @endif
 
-                @if (Auth::user()->profile_pic == "noimage.jpg")
-                <img class="img-profile rounded-circle" src="{{ asset('admin/img/undraw_profile.svg') }}">
-
+                @if (Auth::user()->profile_pic == 'noimage.jpg')
+                    <img class="img-profile rounded-circle" src="{{ asset('admin/img/undraw_profile.svg') }}">
                 @else
-                    insert pic
+                    <img class="img-profile rounded-circle"
+                        src="{{ storage_path('storage/app/profile_pics/' . Auth::user()->id . '/' . Auth::user()->profile_pic) }}">
                 @endif
 
-                
+
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
