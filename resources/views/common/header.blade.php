@@ -25,7 +25,7 @@
                     <img class="img-profile rounded-circle" src="{{ asset('admin/img/undraw_profile.svg') }}">
                 @else
                     <img class="img-profile rounded-circle"
-                        src="{{ storage_path('storage/app/profile_pics/' . Auth::user()->id . '/' . Auth::user()->profile_pic) }}">
+                        src="{{ asset('storage/profile_pics/' . Auth::user()->id . '/' . Auth::user()->profile_pic) }}">
                 @endif
 
 

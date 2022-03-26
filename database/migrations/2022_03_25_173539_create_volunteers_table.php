@@ -15,7 +15,7 @@ class CreateVolunteersTable extends Migration
     {
         Schema::create('volunteers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('full_name');
             $table->string('program');
             $table->string('date_start');
@@ -23,6 +23,12 @@ class CreateVolunteersTable extends Migration
             $table->boolean('is_approved');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade')
+            ->onUpdate(('cascade'));
         });
     }
 

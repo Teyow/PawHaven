@@ -43,44 +43,85 @@
 
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var table = $('.data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: "{{ route('visitation.index') }}",
-                columns: [{
-                        data: 'id',
-                        name: 'id'
-                    },
-                    {
-                        data: 'user_id',
-                        name: 'user_id'
-                    },
-                    {
-                        data: 'start',
-                        name: 'start'
-                    },
-                    {
-                        data: 'end',
-                        name: 'end'
-                    },
-                    {
-                        data: 'status',
-                        name: 'status'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
-                ],
+    @if (Auth::user()->is_admin == 1)
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var table = $('.data-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('visitation.all') }}",
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'user_id',
+                            name: 'user_id'
+                        },
+                        {
+                            data: 'start',
+                            name: 'start'
+                        },
+                        {
+                            data: 'end',
+                            name: 'end'
+                        },
+                        {
+                            data: 'status',
+                            name: 'status'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        },
+                    ],
+
+                });
+
 
             });
+        </script>
+    @else
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var table = $('.data-table').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: "{{ route('visitation.index') }}",
+                    columns: [{
+                            data: 'id',
+                            name: 'id'
+                        },
+                        {
+                            data: 'user_id',
+                            name: 'user_id'
+                        },
+                        {
+                            data: 'start',
+                            name: 'start'
+                        },
+                        {
+                            data: 'end',
+                            name: 'end'
+                        },
+                        {
+                            data: 'status',
+                            name: 'status'
+                        },
+                        {
+                            data: 'action',
+                            name: 'action',
+                            orderable: false,
+                            searchable: false
+                        },
+                    ],
+
+                });
 
 
-        });
-    </script>
-
+            });
+        </script>
+    @endif
 @endsection

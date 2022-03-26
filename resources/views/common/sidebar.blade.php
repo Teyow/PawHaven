@@ -36,14 +36,24 @@
         </li>
     @endif
 
+    @if (Auth::user()->is_admin == 1)
+     <!-- Nav Item - Visitation -->
+     <li class="nav-item">
+        <a class="nav-link" href="{{ route('visitation.all') }}">
+            <i class="fas fa-fw fa-calendar"></i>
+            <span>Visitation</span></a>
+    </li>
 
-    <!-- Nav Item - Visitation -->
-    <li class="nav-item">
+    @else
+     <!-- Nav Item - Visitation -->
+     <li class="nav-item">
         <a class="nav-link" href="{{ route('visitation.index') }}">
             <i class="fas fa-fw fa-calendar"></i>
             <span>Visitation</span></a>
     </li>
 
+    @endif
+   
     <!-- Nav Item - Charity -->
     <li class="nav-item">
         <a class="nav-link" href="{{ route('charity.index') }}">

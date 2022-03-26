@@ -16,13 +16,26 @@ class CreateVisitsTable extends Migration
     {
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('pet_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('pet_id')->nullable();
             $table->string('start');
             $table->string('end');
             $table->boolean('is_approved');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade')
+                ->onUpdate(('cascade'));
+
+
+            $table->foreign('pet_id')
+                ->references('id')
+                ->on('pets')
+                ->onDelete('cascade')
+                ->onUpdate(('cascade'));
         });
     }
 

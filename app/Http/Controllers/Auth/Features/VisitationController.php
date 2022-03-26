@@ -19,7 +19,7 @@ class VisitationController extends Controller
      */
     public function index(Request $request)
     {
-        //admin datatables
+        //user data table
         if ($request->ajax()) {
             $data = DB::table('visits')
                 ->where('deleted_at', NULL)
@@ -144,5 +144,41 @@ class VisitationController extends Controller
             'end' => $request->date_end,
             'is_approved' => false,
         ]);
+    }
+
+
+    public function allVisits(Request $request)
+    {
+
+        if ($request->ajax()) {
+            $data = DB::table('visits')
+                ->select('*')
+                ->where('deleted_at', NULL)
+                ->latest();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = '<a href="' . \URL::route('visitation.show', $row->id) . '" data-id="' . $row->id . '" class="btn btn-primary btn-circle btn-sm" id="viewbtn"><i class="fas fa-search"></i></a>';
+
+                    return $btn;
+                })
+
+                ->addColumn('status', function ($row) {
+                    if ($row->is_approved == 0) {
+                        return '<span class="badge badge-danger">Not yet approved</span>';
+                    } else {
+                        return '<span class="badge badge-success">Approved</span>';
+                    }
+                })
+
+                ->rawColumns(['action', 'status'])
+                ->make(true);
+        }
+
+        
+
+
+        return view('features.visitation');
     }
 }

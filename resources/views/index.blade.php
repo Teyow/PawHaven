@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron homepage" data-aos="zoom-in">
+    <div class="jumbotron homepage" >
         <div class="container homepage-content">
-            <h1 class="display-3 hp-title text-white" data-aos="zoom-in">SAVE THE <span
+            <h1 class="display-3 hp-title text-white" >SAVE THE <span
                     style="color:#66E7CE; font-weight: 900"> PAWS</span> OF
                 THE WORLD</h1>
 

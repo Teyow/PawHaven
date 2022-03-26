@@ -45,6 +45,7 @@ Route::get('/donation/view/all', [DonationController::class, 'showAll'])->name('
 Route::post('/donation/approve/{id}', [DonationController::class, 'approve'])->name('donate.approve');
 Route::post('/donation/disapprove/{id}', [DonationController::class, 'disapprove'])->name('donate.disapprove');
 Route::resource('/editprofile/{id}/edit', EditProfileController::class);
+Route::get('/visitation/all', [VisitationController::class, 'allVisits'])->name('visitation.all');
 
 
 //visiting
