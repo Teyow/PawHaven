@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', '| View My Donations')
+@section('title', '| View Donations')
 
 @section('content')
 
@@ -19,6 +19,12 @@
             @endif
 
         </div>
+
+        @if (Session::get('success'))
+            <div class="alert alert-success" role="alert">
+                {{ Session::get('success') }}
+            </div>
+        @endif
 
         <div class="card shadow-card mb-3 mt-3">
             <div class="card-body">

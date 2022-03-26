@@ -8,7 +8,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <div class="back">
                 @if (Auth::user()->is_admin == 1)
-                    <a href="#" class="text-gray-900" style="text-decoration: none;">
+                    <a href="{{ route('visitation.all') }}" class="text-gray-900" style="text-decoration: none;">
                         <i class="fas fa-chevron-left"></i> Back </a>
                 @else
                     <a href="#" class="text-gray-900" style="text-decoration: none;">

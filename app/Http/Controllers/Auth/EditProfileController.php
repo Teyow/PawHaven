@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EditProfileController extends Controller
@@ -57,7 +58,9 @@ class EditProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('features.editprofile', [
+            'user' => User::find($id),
+        ]);
     }
 
     /**

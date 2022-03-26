@@ -13,6 +13,15 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 accent-color">Programs for Volunteers</h1>
+
+            @if (Auth::user()->is_admin == 0)
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fas fa-bookmark fa-sm text-white-50 mr-2"></i>Volunteers</a>
+            @else
+                <a href="{{ route('volunteers.all') }}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fas fa-bookmark fa-sm text-white-50 mr-2"></i>Volunteers</a>
+            @endif
         </div>
 
         <div class="row row-cols-1 row-cols-md-3">
@@ -25,10 +34,14 @@
                         <div class="card-body">
                             <h5 class="card-title page-subheadings-500">{{ $program->program_title }}</h5>
                             <p class="card-text">{{ $program->program_desc }}</p>
-                            <div class="d-flex justify-content-end">
-                                <a href="{{ route('volunteer.show', $program->id) }}"
-                                    class="btn btn-accent-color">Volunteer</a>
-                            </div>
+
+                            @if (Auth::user()->is_admin != 1)
+                                <div class="d-flex justify-content-end">
+                                    <a href="{{ route('volunteer.show', $program->id) }}"
+                                        class="btn btn-accent-color">Volunteer</a>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>

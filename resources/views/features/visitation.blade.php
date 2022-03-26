@@ -7,8 +7,12 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 accent-color">Visitation</h1>
-            <a href="{{ route('visitation.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                    class="fas fa-plus fa-sm text-white-50"></i> Schedule a Visit</a>
+
+            @if (Auth::user()->is_admin != 1)
+                <a href="{{ route('visitation.create') }}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                        class="fas fa-plus fa-sm text-white-50"></i> Schedule a Visit</a>
+            @endif
         </div>
 
 
@@ -78,6 +82,94 @@
                         },
                     ],
 
+                });
+
+                $(document).on('click', '#approvebtn', function() {
+                    var id = $(this).data('id');
+                    console.log(id);
+
+                    swal({
+                            title: "Are you sure?",
+                            text: 'Do you want to approve this schedule?',
+                            icon: 'warning',
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    }
+                                });
+
+                                $.ajax({
+                                    url: 'http://127.0.0.1:8000/visitation/approve/' + id,
+                                    type: 'POST',
+                                    dataType: 'JSON',
+                                    data: {
+                                        "id": id
+                                    },
+
+                                    success: function(response) {
+                                        table.ajax.reload();
+                                        swal('Approved!', response.message, 'success');
+                                    },
+
+                                    error: function(response) {
+                                        console.log(response)
+                                    }
+
+                                });
+                            } else {
+                                swal("No changes were made!");
+                            }
+
+                        });
+                });
+
+                $(document).on('click', '#disapprovebtn', function() {
+                    var id = $(this).data('id');
+                    console.log(id);
+
+                    swal({
+                            title: "Are you sure?",
+                            text: 'Do you want to disapprove this schedule?',
+                            icon: 'warning',
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    }
+                                });
+
+                                $.ajax({
+                                    url: 'http://127.0.0.1:8000/visitation/disapprove/' + id,
+                                    type: 'POST',
+                                    dataType: 'JSON',
+                                    data: {
+                                        "id": id
+                                    },
+
+                                    success: function(response) {
+                                        table.ajax.reload();
+                                        swal('Dispproved!', response.message, 'success');
+                                    },
+
+                                    error: function(response) {
+                                        console.log(response)
+                                    }
+
+                                });
+                            } else {
+                                swal("No changes were made!");
+                            }
+
+                        });
                 });
 
 

@@ -41,7 +41,7 @@ Route::get('/donate/view/{id}', [DonationController::class, 'showDonations'])->n
 Route::get('/donation/view/all', [DonationController::class, 'showAll'])->name('donate.alldonations');
 Route::post('/donation/approve/{id}', [DonationController::class, 'approve'])->name('donate.approve');
 Route::post('/donation/disapprove/{id}', [DonationController::class, 'disapprove'])->name('donate.disapprove');
-Route::resource('/editprofile/{id}/edit', EditProfileController::class);
+Route::resource('/editprofile', EditProfileController::class);
 Route::get('/visitation/success', [VisitationController::class, 'successVisit']);
 Route::get('/visitation/all', [VisitationController::class, 'allVisits'])->name('visitation.all');
 
@@ -57,6 +57,12 @@ Route::post('/addvolunteer', [VolunteerController::class, 'addVolunteer']);
 Route::resource('/visitation', VisitationController::class);
 
 Route::post('/visitation/addvisit', [VisitationController::class, 'addVisit']);
+Route::post('/visitation/approve/{id}', [VisitationController::class, 'approveVisit'])->name('visitation.approve');
+Route::post('/visitation/disapprove/{id}', [VisitationController::class, 'disapproveVisit'])->name('visitation.disapprove');
 //Route::get('/visitation/success', [VisitationController::class, 'successVisit']);
-Route::view('/visitation/testing', 'volunteer.index');
+//Route::view('/visitation/testing', 'volunteer.index');
 //('/visitation/successful', [VisitationController::class, 'successVisit']);
+
+Route::get('/volunteers/all', [VolunteerController::class, 'allVolunteers'])->name('volunteers.all');
+Route::post('/volunteer/approve/{id}', [VolunteerController::class, 'approveVolunteer'])->name('volunteers.approve');
+Route::post('/volunteer/disapprove/{id}', [VolunteerController::class, 'disapproveVolunteer'])->name('volunteers.disapprove');

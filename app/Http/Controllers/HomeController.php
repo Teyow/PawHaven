@@ -49,6 +49,10 @@ class HomeController extends Controller
             ->where('pets.deleted_at', NULL)
             ->count();
 
+        $totalVolunteers = DB::table('volunteers')
+            ->where('deleted_at', NULL)
+            ->count();
+
 
 
         //$record = User::select(\DB::raw("COUNT(*) as count"), \DB::raw("DAYNAME(created_at) as day_name"), \DB::raw("DAY(created_at) as day"))
@@ -57,6 +61,7 @@ class HomeController extends Controller
         //    ->orderBy('day')
         //    ->get();
 
+        //donations pie chart
         $record = DB::table('donations')
             ->select('type', DB::raw('count(*) as count'))
             ->groupBy('type')
@@ -72,12 +77,31 @@ class HomeController extends Controller
         $data['chart_data'] = json_encode($data);
 
         //return $data['chart_data'];
+
+        //volunteers pie chart
+
+        $volunteer = DB::table('volunteers')
+            ->select('program', DB::raw('count(*) as count'))
+            ->groupBy('program')
+            ->get();
+
+        $volunteers = [];
+
+        foreach ($volunteer as $row) {
+            $volunteers['label'][] = $row->program;
+            $volunteers['data'][] = (int) $row->count;
+        }
+
+        $volunteers['volunteers_data'] = json_encode($volunteers);
+
         return view('home', [
             'pet' => $pet,
             'totalUsers' => $totalusers,
             'totalRegisteredPets' => $totalRegisteredPets,
             'totalAdoptedPets' => $totalAdoptedPets,
-            'data' => $data
+            'totalVolunteers' => $totalVolunteers,
+            'data' => $data,
+            'volunteers' => $volunteers
         ]);
     }
 }

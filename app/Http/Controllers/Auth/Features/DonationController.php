@@ -63,7 +63,7 @@ class DonationController extends Controller
                     'is_approved' => 0,
                 ]);
 
-                return redirect('donate/');
+                return redirect('donate/view/' . $donation->id)->with('success', 'The donation has been posted!');
             } else {
                 $monetaryImg = $request->file('monetary_file')->getClientOriginalName();
                 $request->monetary_file->move(public_path('donations/monetary/' . Auth::user()->id . '/'), $monetaryImg);
@@ -76,7 +76,7 @@ class DonationController extends Controller
                     'is_approved' => 0,
                 ]);
 
-                return redirect('donate/');
+                return redirect('donate/view/' . $donation->id)->with('success', 'The donation has been posted!');
             }
         }
     }
