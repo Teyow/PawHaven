@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', '| Submit my donation')
+@section('title', '| Schedule a Visit')
 
 @section('content')
 

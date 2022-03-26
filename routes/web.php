@@ -34,9 +34,6 @@ Route::get('/adoption/{id}/schedule/success', [AdminAdoption::class, 'success'])
 Route::post('/adoption/{id}/adopted/success', [AdminAdoption::class, 'adopted']);
 Route::post('/adoption/{id}/adopted/cancel', [AdminAdoption::class, 'cancelAdoption']);
 Route::post('/adoption/{id}/adopted/archive', [AdminAdoption::class, 'archivePet']);
-Route::resource('/visitation', VisitationController::class);
-Route::get('/visitation/successful', [VisitationController::class, 'success']);
-Route::post('/visitation/addvisit', [VisitationController::class, 'addVisit']);
 Route::resource('/charity', CharityController::class);
 Route::resource('/volunteer', VolunteerController::class);
 Route::resource('/donate', DonationController::class);
@@ -45,6 +42,7 @@ Route::get('/donation/view/all', [DonationController::class, 'showAll'])->name('
 Route::post('/donation/approve/{id}', [DonationController::class, 'approve'])->name('donate.approve');
 Route::post('/donation/disapprove/{id}', [DonationController::class, 'disapprove'])->name('donate.disapprove');
 Route::resource('/editprofile/{id}/edit', EditProfileController::class);
+Route::get('/visitation/success', [VisitationController::class, 'successVisit']);
 Route::get('/visitation/all', [VisitationController::class, 'allVisits'])->name('visitation.all');
 
 
@@ -55,3 +53,10 @@ Route::post('/deletevisit', [AdminAdoption::class, 'deleteVisit']);
 
 //adding volunteers schedule
 Route::post('/addvolunteer', [VolunteerController::class, 'addVolunteer']);
+
+Route::resource('/visitation', VisitationController::class);
+
+Route::post('/visitation/addvisit', [VisitationController::class, 'addVisit']);
+//Route::get('/visitation/success', [VisitationController::class, 'successVisit']);
+Route::view('/visitation/testing', 'volunteer.index');
+//('/visitation/successful', [VisitationController::class, 'successVisit']);

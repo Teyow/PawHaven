@@ -132,7 +132,14 @@ class VisitationController extends Controller
 
     public function successVisit()
     {
-        dd('hello');
+        $latest = DB::table('visits')
+            ->latest('created_at', 'desc')
+            ->first();
+
+        return view('features.successvisit', [
+
+            'visit_info' => $latest
+        ]);
     }
 
     public function addVisit(Request $request)
@@ -176,7 +183,7 @@ class VisitationController extends Controller
                 ->make(true);
         }
 
-        
+
 
 
         return view('features.visitation');
