@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth\Features;
 
 use App\Http\Controllers\Controller;
 use App\Models\Programs;
+use App\Models\Volunteer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VolunteerController extends Controller
 {
@@ -27,7 +29,6 @@ class VolunteerController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -86,5 +87,19 @@ class VolunteerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addVolunteer(Request $request)
+    {
+        Volunteer::create([
+            'user_id' => Auth::user()->id,
+            'full_name' => $request->fullName,
+            'program' => $request->program,
+            'date_start' => $request->dateStart,
+            'date_end' => $request->dateEnd,
+            'is_approved' => false,
+        ]);
+
+        return redirect('volunteer/' . $request->programId)->with('success', 'Thank you for volunteering for the program!')->with('programs', Programs::find($request->programId));
     }
 }

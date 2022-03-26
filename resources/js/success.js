@@ -1,10 +1,24 @@
 import moment from "moment";
 
+if (typeof jQuery === "undefined") {
+    var script = document.createElement("script");
+    script.src = "http://code.jquery.com/jquery-latest.min.js";
+    script.type = "text/javascript";
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+const startDate = $("#start").val();
+const endDate = $("#end").val();
+
+window.onload = function () {
+    $("#date").text(formatDate(startDate));
+    $("#time").text(formatTime(startDate) + " - " + formatTime(endDate));
+};
+
 const formatDate = (date) => {
-    let x = moment(date).format("LL");
-    return x;
+    return moment(date).format("LL");
 };
 
 const formatTime = (time) => {
-    moment(time).format("LT");
+    return moment(time).format("LT");
 };

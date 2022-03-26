@@ -14,7 +14,7 @@ const mix = require("laravel-mix");
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/calendar.js", "public/js")
     .js("resources/js/success.js", "public/js")
-    .js("resources/js/volunteer.js", "public/js")
+    .js("resources/js/schedulevisit.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .css("resources/css/app.css", "public/css")
     .css("resources/css/styles.css", "public/styles")

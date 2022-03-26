@@ -7,6 +7,17 @@ import moment from "moment";
 import axios from "axios";
 import swal from "sweetalert";
 
+if (typeof jQuery === "undefined") {
+    var script = document.createElement("script");
+    script.src = "http://code.jquery.com/jquery-latest.min.js";
+    script.type = "text/javascript";
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+window.onload = function () {
+    getUserVisits();
+};
+
 let calendarEl = document.getElementById("calendar");
 
 let now = moment();
@@ -33,11 +44,8 @@ const clickDate = (info) => {
         }).then((response) => {
             const formData = new FormData();
             const petId = document.getElementById("petId").value;
-            formData.append("date_start", moment(info.dateStr).format("LL LT"));
-            formData.append(
-                "date_end",
-                moment(info.dateStr).add(60, "m").format("LL LT")
-            );
+            formData.append("date_start", moment(info.dateStr).format());
+            formData.append("date_end", moment(info.dateStr).add(60, "m"));
             formData.append("is_approved", false);
             formData.append("pet_id", petId);
             if (response == "OK") {
@@ -69,7 +77,35 @@ const clickDate = (info) => {
         });
     }
 };
+const clickEvent = (info) => {
+    swal({
+        title: "Remove Visit?",
+        text: "Are you sure you want to cancel your visit?",
+        icon: "warning",
+        buttons: {
+            cancel: "No",
+            OK: "Proceed",
+        },
+    }).then((response) => {
+        if (response == "OK") {
+            axios
+                .post("/deletevisit", {
+                    id: info.event.id,
+                })
+                .then((response) => {
+                    swal({
+                        title: "Deleted!",
+                        text: "The scheduled visit has been deleted!",
+                        icon: "success",
+                    }).then((response) => {
+                        info.event.remove();
+                    });
+                });
+        }
+    });
+};
 
+let userEvents = [];
 let calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
     initialView: "dayGridMonth",
@@ -78,19 +114,31 @@ let calendar = new Calendar(calendarEl, {
         center: "Schedule a Visit",
         right: "dayGridMonth,timeGridWeek,listWeek",
     },
+    editable: true,
     initialDate: now._d,
     selectable: true,
     dayMaxEvents: true, // allow "more" link when too many events
-    events: [
-        {
-            start: now._d,
-            end: now._d,
-            title: "Test",
-            display: "list-item",
-        },
-    ],
+    events: userEvents,
+    eventsSet: getUserVisits,
     dateClick: clickDate,
+    eventClick: clickEvent,
 });
+
+const getUserVisits = () => {
+    axios.get("/getuservisit").then((response) => {
+        let arr = response.data;
+        console.log(arr.length);
+        for (let i = 0; i < arr.length; i++) {
+            let obj = {
+                id: arr[i].id,
+                start: moment(arr[i].start).format(),
+                end: moment(arr[i].end).format(),
+            };
+            console.log(obj);
+            calendar.addEvent(obj);
+        }
+    });
+};
 
 const formatDate = (date) => {
     moment(date).format("LL");

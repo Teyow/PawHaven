@@ -78,12 +78,14 @@
                         <dl class="row">
                             <dt class="col-sm-2">Date</dt>
                             <dd class="col-sm-10">
+                                <input type="text" value="{{ $visit_info->start }}" id="start" hidden>
+                                <input type="text" value="{{ $visit_info->end }}" id="end" hidden>
                                 <div id="date" class="p">date</div>
                             </dd>
 
                             <dt class="col-sm-2">Time</dt>
                             <dd class="col-sm-10">
-                                <p>insert time</p>
+                                <div id="time" class="p">date</div>
                             </dd>
 
                         </dl>
@@ -99,16 +101,11 @@
 
                         <div class="pet-schedule-text">
                             <dl class="row">
-                                <dt class="col-sm-4">Proof of Identity</dt>
-                                <dd class="col-sm-8">Insert type of ids</dd>
+                                <dt class="col-sm-5">Proof of Identity</dt>
+                                <dd class="col-sm-7">Valid ID</dd>
 
-                                <dt class="col-sm-4">Proof of age</dt>
-                                <dd class="col-sm-8">
-                                    Insert type of ids
-                                </dd>
-
-                                <dt class="col-sm-4">Residential Proof</dt>
-                                <dd class="col-sm-8">
+                                <dt class="col-sm-5">Residential Proof (Optional)</dt>
+                                <dd class="col-sm-7">
                                     Insert type of ids
                                 </dd>
 
@@ -116,7 +113,6 @@
                         </div>
 
                         <script src="{{ asset('js/success.js') }}">
-                            console.log(formatDate({{ $visit_info->date_start }}))
                         </script>
 
 

@@ -13,8 +13,9 @@ class Visit extends Model
 
     protected $fillable = [
         'user_id',
-        'date_start',
-        'date_end',
+        'pet_id',
+        'start',
+        'end',
         'is_approved',
     ];
 }

@@ -17,8 +17,9 @@ class CreateVisitsTable extends Migration
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->string('date_start');
-            $table->string('date_end');
+            $table->bigInteger('pet_id')->nullable();
+            $table->string('start');
+            $table->string('end');
             $table->boolean('is_approved');
             $table->timestamps();
             $table->softDeletes();

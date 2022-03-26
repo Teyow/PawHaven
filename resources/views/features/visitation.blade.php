@@ -7,8 +7,8 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 accent-color">Visitation</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> Schedule a Visit</a>
+            <a href="{{ route('visitation.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                    class="fas fa-plus fa-sm text-white-50"></i> Schedule a Visit</a>
         </div>
 
 
@@ -58,12 +58,12 @@
                         name: 'user_id'
                     },
                     {
-                        data: 'date_start',
-                        name: 'date_start'
+                        data: 'start',
+                        name: 'start'
                     },
                     {
-                        data: 'date_end',
-                        name: 'date_end'
+                        data: 'end',
+                        name: 'end'
                     },
                     {
                         data: 'status',

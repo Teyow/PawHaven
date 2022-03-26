@@ -31,29 +31,28 @@ class AdminAdoption extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    if($row->is_adopted == 0){
+                    if ($row->is_adopted == 0) {
                         $btn = '<a href="' . \URL::route('adoption.show', $row->id) . '" data-id="' . $row->id . '" class="btn btn-primary btn-circle btn-sm" id="viewbtn"><i class="fas fa-search"></i></a>';
                         $btn = $btn . '<a data-id="' . $row->id . '" class="btn btn-success btn-circle btn-sm ml-2" id="adoptedBtn"><i class="fas fa-home"></i></a>';
                         $btn = $btn . '<a data-id="' . $row->id . '" class="btn btn-warning btn-circle btn-sm ml-2" id="archiveBtn"><i class="fas fa-archive"></i></a>';
                         return $btn;
-                    }else{
+                    } else {
                         $btn = '<a href="' . \URL::route('adoption.show', $row->id) . '" data-id="' . $row->id . '" class="btn btn-primary btn-circle btn-sm" id="viewbtn"><i class="fas fa-search"></i></a>';
                         $btn = $btn . '<a data-id="' . $row->id . '" class="btn btn-danger btn-circle btn-sm ml-2" id="cancelBtn"><i class="fas fa-ban"></i></a>';
                         $btn = $btn . '<a data-id="' . $row->id . '" class="btn btn-warning btn-circle btn-sm ml-2" id="archiveBtn"><i class="fas fa-archive"></i></a>';
                         return $btn;
                     }
-
                 })
 
-                ->addColumn('status', function($row){
-                    if ($row->is_adopted == 0){
+                ->addColumn('status', function ($row) {
+                    if ($row->is_adopted == 0) {
                         return '<span class="badge badge-danger">Not yet adopted</span>';
-                    }else{
+                    } else {
                         return '<span class="badge badge-success">Adopted</span>';
                     }
                 })
 
-                ->addColumn('age', function($row){
+                ->addColumn('age', function ($row) {
                     $ageunit = $row->age . ' ' . $row->unit;
                     return $ageunit;
                 })
@@ -271,7 +270,6 @@ class AdminAdoption extends Controller
      */
     public function destroy($id)
     {
-    
     }
 
     public function schedule($id)
@@ -300,24 +298,26 @@ class AdminAdoption extends Controller
     public function saveDate(Request $request)
     {
         $visit = Visit::create([
-            'user_id' => 1,
-            'date_start' => $request->date_start,
-            'date_end' => $request->date_end,
+            'user_id' => Auth::user()->id,
+            'pet_id' => $request->pet_id,
+            'start' => $request->date_start,
+            'end' => $request->date_end,
             'is_approved' => false,
         ]);
     }
 
-    public function adopted($id){
+    public function adopted($id)
+    {
 
         $pet = Pet::find($id);
         $pet->is_adopted = 1;
         $pet->save();
 
         return response()->json(['message' => 'The pet has been adopted!']);
-        
     }
 
-    public function cancelAdoption($id){
+    public function cancelAdoption($id)
+    {
         $pet = Pet::find($id);
         $pet->is_adopted = 0;
         $pet->save();
@@ -325,7 +325,8 @@ class AdminAdoption extends Controller
         return response()->json(['message' => 'The adoption has been cancelled!']);
     }
 
-    public function archivePet($id){
+    public function archivePet($id)
+    {
         $pet = Pet::find($id);
         $pet->deleted_at = now();
         $pet->save();
@@ -335,5 +336,20 @@ class AdminAdoption extends Controller
         $profile->save();
 
         return response()->json(['message' => 'The pet has been archived!']);
+    }
+
+    public function getAllVisits()
+    {
+        return DB::table('visits')
+            ->select('id', 'start', 'end')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+    }
+
+    public function deleteVisit(Request $request)
+    {
+        return DB::table('visits')
+            ->where('id', $request->id)
+            ->delete();
     }
 }

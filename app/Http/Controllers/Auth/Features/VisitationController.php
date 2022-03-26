@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth\Features;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Visit;
 
 
 class VisitationController extends Controller
@@ -21,16 +23,15 @@ class VisitationController extends Controller
         if ($request->ajax()) {
             $data = DB::table('visits')
                 ->where('deleted_at', NULL)
+                ->where('user_id', Auth::user()->id)
                 ->latest();
 
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<a href="#" data-id="' . $row->id . '" class="btn btn-primary btn-circle btn-sm" id="viewbtn"><i class="fas fa-search"></i></a>';
-                        $btn = $btn . '<a data-id="' . $row->id . '" class="btn btn-success btn-circle btn-sm ml-2" id="adoptedBtn"><i class="fas fa-home"></i></a>';
-                        $btn = $btn . '<a data-id="' . $row->id . '" class="btn btn-warning btn-circle btn-sm ml-2" id="archiveBtn"><i class="fas fa-archive"></i></a>';
-                        return $btn;
-                 
+                    $btn = '<a href="' . \URL::route('visitation.show', $row->id) . '" data-id="' . $row->id . '" class="btn btn-primary btn-circle btn-sm" id="viewbtn"><i class="fas fa-search"></i></a>';
+
+                    return $btn;
                 })
 
                 ->addColumn('status', function ($row) {
@@ -56,7 +57,7 @@ class VisitationController extends Controller
      */
     public function create()
     {
-        return view('features.scheduleavisit');
+        return view('features.addvisit');
     }
 
     /**
@@ -113,5 +114,35 @@ class VisitationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function success()
+    {
+        //$latest = DB::table('visits')
+        //    ->latest('created_at', 'desc')
+        //    ->first();
+        //
+        //return view('features.successvisit', [
+        //
+        //    'visit_info' => $latest
+        //]);
+
+        return 'hdsjhdjas';
+    }
+
+    public function successVisit()
+    {
+        dd('hello');
+    }
+
+    public function addVisit(Request $request)
+    {
+        $visit = Visit::create([
+            'user_id' => Auth::user()->id,
+            'pet_id' => null,
+            'start' => $request->date_start,
+            'end' => $request->date_end,
+            'is_approved' => false,
+        ]);
     }
 }
