@@ -11,12 +11,17 @@
                 <i class="fas fa-chevron-left"></i> Back </a>
         </div>
 
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
-            <h1 class="h3 mb-0 accent-color">Volunteers</h1>
-        </div>
-
+        @if (Auth::user()->is_admin == 1)
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+                <h1 class="h3 mb-0 accent-color">Volunteers</h1>
+            </div>
+        @else
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
+                <h1 class="h3 mb-0 accent-color">My Programs</h1>
+            </div>
+        @endif
         <div class="card shadow-card mb-3 mt-3">
             <div class="card-body">
                 <div class="table-responsive">
