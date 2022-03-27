@@ -11,8 +11,8 @@
                     <a href="{{ route('visitation.all') }}" class="text-gray-900" style="text-decoration: none;">
                         <i class="fas fa-chevron-left"></i> Back </a>
                 @else
-                    <a href="#" class="text-gray-900" style="text-decoration: none;">
-                        <i class="fas fa-chevron-left"></i> Back </a>
+                <a href="{{ route('visitation.index') }}" class="text-gray-900" style="text-decoration: none;">
+                    <i class="fas fa-chevron-left"></i> Back </a>
                 @endif
 
             </div>
@@ -67,11 +67,28 @@
                         <div class="pet-schedule-text">
                             <dl class="row">
                                 <dt class="col-sm-5">Proof of Identity</dt>
-                                <dd class="col-sm-7">Valid ID</dd>
+                                <dd class="col-sm-7">Passport,
+                                    Driver's License,
+                                    UMID,
+                                    PhilHealth ID,
+                                    TIN ID,
+                                    Postal ID,
+                                    Voter's ID,
+                                    PRC ID,
+                                    Senior Citizen ID,
+                                    OFW ID,
+                                    National ID,</dd>
 
                                 <dt class="col-sm-5">Residential Proof (Optional)</dt>
                                 <dd class="col-sm-7">
-                                    Insert type of ids
+                                    Passport,
+                                    Driver's License,
+                                    Postal ID,
+                                    UMID,
+                                    Senior Citizen ID,
+                                    Barangay Certificate,
+                                    Police ID/Clearance,
+                                    Police ID/Clearance
                                 </dd>
 
                             </dl>

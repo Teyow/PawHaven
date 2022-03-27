@@ -64,5 +64,6 @@ Route::post('/visitation/disapprove/{id}', [VisitationController::class, 'disapp
 //('/visitation/successful', [VisitationController::class, 'successVisit']);
 
 Route::get('/volunteers/all', [VolunteerController::class, 'allVolunteers'])->name('volunteers.all');
+Route::get('/volunteers/myprograms', [VolunteerController::class, 'viewMyprograms'])->name('volunteers.myprograms');
 Route::post('/volunteer/approve/{id}', [VolunteerController::class, 'approveVolunteer'])->name('volunteers.approve');
 Route::post('/volunteer/disapprove/{id}', [VolunteerController::class, 'disapproveVolunteer'])->name('volunteers.disapprove');

@@ -106,27 +106,17 @@ class VolunteerController extends Controller
         return redirect('volunteer/' . $request->programId)->with('success', 'Thank you for volunteering for the program!')->with('programs', Programs::find($request->programId));
     }
 
-    public function allVolunteers(Request $request)
+    public function viewMyprograms(Request $request)
     {
         //admin datatables
         if ($request->ajax()) {
             $donation = DB::table('volunteers')
+                ->where('user_id', Auth::user()->id)
                 ->latest();
-           
+
             return DataTables::of($donation)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                   
-                    if ($row->is_approved == 0) {
-                        $btn =  '<a data-id="' . $row->id . '" class="btn btn-success btn-circle btn-sm " id="verifybtn"><i class="fas fa-check"></i></a>';
-                        return $btn;
-                    } else {
-                        
-                        $btn = '<a data-id="' . $row->id . '" class="btn btn-danger btn-circle btn-sm " id="unverifybtn"><i class="fas fa-times"></i></a>';
-                        return $btn;
-                    }
-                })
-               
+
                 ->addColumn('is_approved', function ($row) {
                     if ($row->is_approved == 0) {
                         return '<span class="badge badge-danger">Not yet verified</span>';
@@ -134,9 +124,70 @@ class VolunteerController extends Controller
                         return '<span class="badge badge-success">Verified</span>';
                     }
                 })
-               
+
                 ->editColumn('date_start', function ($row) {
-                    
+
+                    //$formatedDate = Carbon::parse($row->date_start);
+                    $formatedDate = $row->date_start;
+                    $formatedDate = str_replace('/', '-', $formatedDate);
+                    //
+                    $parsedDate = date('F d, Y', strtotime($formatedDate));
+                    //
+                    //$parsedDate = Carbon::createFromFormat('d-m-Y', $formatedDate)->format('M d, Y');
+                    return $parsedDate;
+                })
+                //
+                ->editColumn('date_end', function ($row) {
+                    //
+                    //
+                    //$formatedDate = Carbon::parse($row->date_end);
+                    $formatedDate = $row->date_end;
+                    $formatedDate = str_replace('/', '-', $formatedDate);
+                    //$formatedDate = str_replace('/', '-', $formatedDate);
+                    $parsedDate = date('F d, Y', strtotime($formatedDate));
+                    //$parsedDate = Carbon::createFromFormat('d-m-Y', $formatedDate)->format('M d, Y');
+                    return $parsedDate;
+                })
+                //
+                ->rawColumns(['is_approved'])
+                ->make(true);
+        }
+
+
+        return view('features.viewvolunteers');
+    }
+
+    public function allVolunteers(Request $request)
+    {
+        //admin datatables
+        if ($request->ajax()) {
+            $donation = DB::table('volunteers')
+                ->latest();
+
+            return DataTables::of($donation)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+
+                    if ($row->is_approved == 0) {
+                        $btn =  '<a data-id="' . $row->id . '" class="btn btn-success btn-circle btn-sm " id="verifybtn"><i class="fas fa-check"></i></a>';
+                        return $btn;
+                    } else {
+
+                        $btn = '<a data-id="' . $row->id . '" class="btn btn-danger btn-circle btn-sm " id="unverifybtn"><i class="fas fa-times"></i></a>';
+                        return $btn;
+                    }
+                })
+
+                ->addColumn('is_approved', function ($row) {
+                    if ($row->is_approved == 0) {
+                        return '<span class="badge badge-danger">Not yet verified</span>';
+                    } else {
+                        return '<span class="badge badge-success">Verified</span>';
+                    }
+                })
+
+                ->editColumn('date_start', function ($row) {
+
                     //$formatedDate = Carbon::parse($row->date_start);
                     $formatedDate = $row->date_start;
                     $formatedDate = str_replace('/', '-', $formatedDate);

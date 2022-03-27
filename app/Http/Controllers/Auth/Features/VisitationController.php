@@ -24,8 +24,10 @@ class VisitationController extends Controller
         //user data table
         if ($request->ajax()) {
             $data = DB::table('visits')
-                ->where('deleted_at', NULL)
+                ->join('users', 'visits.user_id', '=', 'users.id')
+                ->select('users.first_name', 'users.last_name', 'visits.*')
                 ->where('user_id', Auth::user()->id)
+                ->where('visits.deleted_at', NULL)
                 ->latest();
 
             return DataTables::of($data)
@@ -42,6 +44,10 @@ class VisitationController extends Controller
                     } else {
                         return '<span class="badge badge-success">Approved</span>';
                     }
+                })
+
+                ->addColumn('user_id', function($row){
+                    return $row->first_name . ' ' . $row->last_name;
                 })
 
                 ->editColumn('start', function($row){
