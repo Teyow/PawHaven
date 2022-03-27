@@ -84,7 +84,7 @@
 
 
   <div class="row">
-      <div class="col-xl-6 col-lg-6">
+      <div class="col-xl-12 col-lg-12">
           <div class="card shadow mb-4">
 
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -101,7 +101,7 @@
       </div>
 
 
-      <div class="col-xl-6 col-lg-6">
+      <div class="col-xl-12 col-lg-12">
           <div class="card shadow mb-4">
 
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -215,7 +215,7 @@
               title: {
                   display: true,
                   position: "top",
-                  text: "Volunteers per Type",
+                  text: "Volunteers per Program",
                   fontSize: 18,
                   fontColor: "#111",
                   fontFamily: "Montserrat",

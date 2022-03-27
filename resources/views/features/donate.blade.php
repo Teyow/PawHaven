@@ -45,15 +45,15 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <h6 class="accent-color font-weight-bold">Bank of the Philippine Islands</h6>
-                                <p>Account Number: 1232323123123123</p>
+                                <p>Account Number: 0000-201383</p>
                             </li>
                             <li class="list-group-item">
                                 <h6 class="accent-color font-weight-bold">BDO Savings</h6>
-                                <p>Account Number:</p>
+                                <p>Account Number: 0000-1234-1234</p>
                             </li>
                             <li class="list-group-item">
                                 <h6 class="accent-color font-weight-bold">Metrobank</h6>
-                                <p>Account Number:</p>
+                                <p>Account Number:928-8-23458920-0</p>
                             </li>
                         </ul>
                     </div>

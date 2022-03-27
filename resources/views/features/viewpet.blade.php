@@ -19,11 +19,16 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <h3 style="color: #7EC8DF; font-weight: 600;">Meet {{ $pets->name }}</h3>
-            <a href="{{ route('adoption.edit', $pets->id) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
-                class="fas fa-edit fa-sm text-white-50"></i> Edit Pet</a>
+
+            @if (Auth::user()->is_admin == 1)
+                <a href="{{ route('adoption.edit', $pets->id) }}"
+                    class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i
+                        class="fas fa-edit fa-sm text-white-50"></i> Edit Pet</a>
+            @endif
+
         </div>
 
-     
+
 
         <!--LEFT PANEL -->
         <div class="row">
@@ -73,12 +78,15 @@
                     </a>
                 </div>
 
-                <div class="d-flex justify-content-center align-items-center mb-4 mt-4">
-                    <a href="/adoption/{{ $pets->id }}/schedule" type="button"
-                        class="btn rounded btn-sm mr-3 btn-accent-color">Schedule a
-                        Visit</a>
+                @if (Auth::user()->is_admin != 1)
+                    <div class="d-flex justify-content-center align-items-center mb-4 mt-4">
+                        <a href="/adoption/{{ $pets->id }}/schedule" type="button"
+                            class="btn rounded btn-sm mr-3 btn-accent-color">Schedule a
+                            Visit</a>
 
-                </div>
+                    </div>
+                @endif
+
 
             </div>
 
