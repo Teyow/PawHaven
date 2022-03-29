@@ -99,11 +99,11 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputContactNum">Contact Number</label>
-                            <input type="text" onkeypress="return onlyNumberKey(event)" maxlength="11" name="cnum"
-                                class="form-control @error('cnum') is-invalid @enderror" id="inputContactNum"
+                            <input type="text" onkeypress="return onlyNumberKey(event)" maxlength="11" name="contactNo"
+                                class="form-control @error('contactNo') is-invalid @enderror" id="inputContactNum"
                                 value="{{ $user->contact_no }}">
                             <small class="text-danger">
-                                @error('cnum')
+                                @error('contactNo')
                                     {{ $message }}
                                 @enderror
                             </small>

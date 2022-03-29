@@ -178,7 +178,7 @@
                             <div class="multisteps-form__content">
                                 <div class="form-row mt-4">
                                     <div class="col-12 col-sm-6">
-                                        <select name="size" id="" class="multisteps-form__select form-control">
+                                        <select name="size" id="size" class="multisteps-form__select form-control">
                                             <option disabled hidden selected>Size</option>
                                             <option value="Mini" {{ old('size') == 'Mini' ? 'selected' : '' }}>Mini
                                             </option>
@@ -224,28 +224,28 @@
                                         <div class="form-group">
                                             <label for="">Health Info</label>
                                             <div class="form-check">
-                                                <input class="form-check-input" name="healthInfo[]" type="checkbox"
+                                                <input class="form-check-input healthInfo" name="healthInfo[]" type="checkbox"
                                                     value="Vaccinated" @if (is_array(old('healthInfo')) && in_array('Vaccinated', old('healthInfo'))) checked @endif>
                                                 <label class="form-check-label">
                                                     Vaccinated
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" name="healthInfo[]" type="checkbox"
+                                                <input class="form-check-input healthInfo" name="healthInfo[]" type="checkbox"
                                                     value="Neutered" @if (is_array(old('healthInfo')) && in_array('Neutered', old('healthInfo'))) checked @endif>
                                                 <label class="form-check-label">
                                                     Neutered
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" name="healthInfo[]" type="checkbox"
+                                                <input class="form-check-input healthInfo" name="healthInfo[]" type="checkbox"
                                                     value="With Ailments" @if (is_array(old('healthInfo')) && in_array('With Ailments', old('healthInfo'))) checked @endif>
                                                 <label class="form-check-label">
                                                     With Ailments
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" name="healthInfo[]" type="checkbox"
+                                                <input class="form-check-input healthInfo" name="healthInfo[]" type="checkbox"
                                                     value="No Ailments" @if (is_array(old('healthInfo')) && in_array('No Ailments', old('healthInfo'))) checked @endif>
                                                 <label class="form-check-label">
                                                     No Ailments
@@ -272,8 +272,8 @@
                                     </div>
                                 </div>
                                 <div class="button-row d-flex mt-4">
-                                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button>
-                                    <button class="btn btn-primary ml-auto js-btn-next" type="button"
+                                    <button class="btn btn-primary js-btn-prev" type="button" title="Prev" >Prev</button>
+                                    <button class="btn btn-primary ml-auto js-btn-next" type="button" id="nextBtnSumm"
                                         title="Next">Next</button>
                                 </div>
                             </div>
@@ -316,48 +316,6 @@
                             <h3 class="multisteps-form__title">Summary</h3>
                             <small class="form-text text-muted">Review the details of the pet to be registered.</small>
                             <div class="multisteps-form__content">
-
-                                <!--
-                                    <dl class="row">
-                                        <dt class="col-sm-2">Name:</dt>
-                                        <dd class="col-sm-10" id="nameDiv"></dd>
-
-                                        <dt class="col-sm-2">Type:</dt>
-                                        <dd class="col-sm-10" id="typeDiv"></dd>
-
-                                        <dt class="col-sm-2">Breed:</dt>
-                                        <dd class="col-sm-10" id="breedDiv"></dd>
-
-                                        <dt class="col-sm-2">Gender:</dt>
-                                        <dd class="col-sm-10" id="genderDiv"></dd>
-
-                                        <dt class="col-sm-2">Stage:</dt>
-                                        <dd class="col-sm-10" id="stageDiv"></dd>
-
-                                        <dt class="col-sm-2">Age:</dt>
-                                        <dd class="col-sm-10" id="ageDiv"></dd>
-                                    </dl>
-
-                                    <hr>
-
-                                    <dl class="row">
-                                        <dt class="col-sm-2">Size</dt>
-                                        <dd class="col-sm-10" id="sizeDiv"></dd>
-
-                                        <dt class="col-sm-2">Color:</dt>
-                                        <dd class="col-sm-10" id="colorDiv"></dd>
-
-                                        <dt class="col-sm-2">Personality:</dt>
-                                        <dd class="col-sm-10" id="personalityDiv"></dd>
-
-                                        <dt class="col-sm-2">Health Info:</dt>
-                                        <dd class="col-sm-10" id="healthInfoDiv"></dd>
-
-                                        <dt class="col-sm-2">About:</dt>
-                                        <dd class="col-sm-10" id="aboutDiv"></dd>
-
-                                       
-                                    </dl> -->
                                 <h6 class="page-subheadings-500 mt-3 mb-3">Pet Information</h6>
                                 <div class="container border-left-primary rounded py-2">
                                     <div class="row">
@@ -448,6 +406,45 @@
             $('#about').on('input', function() {
                 $('#aboutDiv').text($(this).val());
             });
+
+            $('select#type').change(function() {
+                let selectedtype = $(this).children("option:selected").val();
+                $('#typeDiv').text(selectedtype);
+                console.log(selectedtype);
+            });
+
+            $('select#gender').change(function() {
+                let selectedgender = $(this).children("option:selected").val();
+                $('#genderDiv').text(selectedgender);
+                console.log(selectedgender);
+            });
+
+            $('select#stage').change(function() {
+               //let selectedstage = $(this).children("option:selected").val();
+               //$('#stageDiv').text(selectedstage);
+               //console.log(selectedstage);
+
+               let selectedstage = $(this).find(':selected').closest('option').attr('value');
+               $('#stageDiv').text(selectedstage);
+               console.log(selectedstage);
+            });
+
+            $('select#size').change(function() {
+                let selectedsize = $(this).children("option:selected").val();
+                $('#sizeDiv').text(selectedsize);
+                console.log(selectedsize);
+            });
+
+            $('#nextBtnSumm').click(function() {
+                var final = '';
+                $('.healthInfo:checked').each(function() {
+                    let values = $(this).val();
+                    final += values + ', ';
+                });
+
+                $('#healthInfoDiv').text(final);
+            })
+
 
             //let type = $("#type option:selected").text();
             //console.log(type);

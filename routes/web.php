@@ -25,9 +25,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth::routes();
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 Route::resource('/adoption', AdminAdoption::class);
 Route::get('/adoption/{id}/schedule', [AdminAdoption::class, 'schedule']);
 Route::get('/adoption/{id}/schedule/success', [AdminAdoption::class, 'success']);

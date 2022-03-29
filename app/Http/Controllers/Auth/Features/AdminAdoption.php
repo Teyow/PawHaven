@@ -167,7 +167,7 @@ class AdminAdoption extends Controller
                     'pet_image' => json_encode($imgData)
                 ]);
 
-                return redirect('/adoption/create')->with('success', 'Pet has been added!');
+                return redirect('/adoption')->with('success', 'Pet has been added!');
             }
         }
     }
