@@ -20,7 +20,7 @@
                                 @csrf
                                 <div class="form-group mb-3 input-form d-flex justify-content-start flex-column">
 
-                                    <input id="email" type="email" class="form-control box-input-form " name="email"
+                                    <input id="email" type="email" class="form-control box-input-form  @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required="" autocomplete="email" autofocus="" placeholder="Email">
                                     <i class="fas fa-envelope"></i>
 
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group input-form d-flex justify-content-start flex-column">
 
-                                    <input id="password" type="password" class="form-control box-input-form "
+                                    <input id="password" type="password" class="form-control box-input-form  @error('password') is-invalid @enderror"
                                         name="password" required="" autocomplete="current-password" placeholder="Password">
                                     <i class="fas fa-lock"></i>
 

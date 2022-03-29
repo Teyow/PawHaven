@@ -25,6 +25,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:01',
         ]);
 
         DB::table('donations')->insert([
@@ -37,19 +38,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
-        ]);
-
-
-        DB::table('donations')->insert([
-            'user_id' => '2',
-            'fullname' => 'Christine Manabat',
-            'type' => 'In-Kind',
-            'amount' => NULL,
-            'items' => 'Dog Food',
-            'monetary_img' => NULL,
-            'in_kind_img' => 'pedigree.jpg',
-            'feedback' => NULL,
-            'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:02',
         ]);
 
 
@@ -63,6 +52,21 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:03',
+        ]);
+
+
+        DB::table('donations')->insert([
+            'user_id' => '2',
+            'fullname' => 'Christine Manabat',
+            'type' => 'In-Kind',
+            'amount' => NULL,
+            'items' => 'Dog Food',
+            'monetary_img' => NULL,
+            'in_kind_img' => 'pedigree.jpg',
+            'feedback' => NULL,
+            'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:04',
         ]);
 
 
@@ -76,6 +80,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => NULL,
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:05',
         ]);
 
 
@@ -89,6 +94,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => NULL,
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:06',
         ]);
         
         DB::table('donations')->insert([
@@ -101,6 +107,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => NULL,
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:07',
         ]);
 
         DB::table('donations')->insert([
@@ -113,6 +120,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => NULL,
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:08',
         ]);
 
         DB::table('donations')->insert([
@@ -125,6 +133,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:09',
         ]);
 
         DB::table('donations')->insert([
@@ -137,6 +146,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:10',
         ]);
 
 
@@ -150,6 +160,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => NULL,
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:11',
         ]);
 
         DB::table('donations')->insert([
@@ -162,6 +173,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:12',
         ]);
 
 
@@ -175,6 +187,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:13',
         ]);
 
                 DB::table('donations')->insert([
@@ -187,6 +200,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => NULL,
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:14',
         ]);
 
         DB::table('donations')->insert([
@@ -199,6 +213,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => 'pedigree.jpg',
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:15',
         ]);
 
         DB::table('donations')->insert([
@@ -211,6 +226,7 @@ class DonationSeeder extends Seeder
             'in_kind_img' => NULL,
             'feedback' => NULL,
             'is_approved' => '0',
+            'created_at' => '2022-03-29 15:14:16',
         ]);
     }
 }

@@ -26,6 +26,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('admin'),
             'is_admin' => 1,
             'profile_pic' => 'noimage.jpg',
+            'created_at' => now(),
         ]);
 
         DB::table('users')->insert([
@@ -37,6 +38,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('user'),
             'is_admin' => 0,
             'profile_pic' => 'noimage.jpg',
+            'created_at' => now(),
         ]);
     }
 }

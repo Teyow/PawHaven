@@ -24,49 +24,57 @@
                 <span class="dot"><img class="features-img" src="{{ asset('img/features/adopt.png') }}" alt=""
                         srcset=""></span>
                 <div class="features-heading">Adopt</div>
-                <div class="features-caption">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo consectetur
-                    commodi et iusto alias in assumenda!</div>
+                <div class="features-caption">Find your favorite pet to adopt and help them find their furever homes</div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 feature-container" data-aos="zoom-in">
                 <span class="dot"><img class="features-img" src="{{ asset('img/features/visitation.png') }}"
                         alt="" srcset=""></span>
                 <div class="features-heading">Visitation</div>
-                <div class="features-caption">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo consectetur
-                    commodi et iusto alias in assumenda!</div>
+                <div class="features-caption">Get to know and play with our pets on your available schedule</div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 feature-container" data-aos="zoom-in">
                 <span class="dot"><img class="features-img" src="{{ asset('img/features/volunteer.png') }}"
                         alt="" srcset=""></span>
                 <div class="features-heading">Volunteer</div>
-                <div class="features-caption">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo consectetur
-                    commodi et iusto alias in assumenda!</div>
+                <div class="features-caption">Participate and work side by side with the animal shelter on your desired program </div>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 feature-container" data-aos="zoom-in">
                 <span class="dot"><img class="features-img" src="{{ asset('img/features/donate.png') }}"
                         alt="" srcset=""></span>
                 <div class="features-heading">Donate</div>
-                <div class="features-caption">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo consectetur
-                    commodi et iusto alias in assumenda!</div>
+                <div class="features-caption">Change their lives by contributing to the shelter through monetary and in-kind donations</div>
             </div>
         </div>
     </div>
+
+    <?php
+    $adoptedPets = DB::table('pets')
+                        ->where('is_adopted', 1)
+                        ->count();
+    $registeredPets = DB::table('pets')
+                        ->where('deleted_at', NULL)
+                        ->count();
+    $volunteers = DB::table('volunteers')
+                        ->where('deleted_at', NULL)
+                        ->count();
+    ?>
 
     <div class="container-fluid stats-section">
         <div class="container stats-container">
             <div class="row">
                 <div class="stats-content col-12 col-md-4 col-lg-4 col-xl-4" data-aos="flip-up">
                     <i class="fas fa-paw stats-icon"></i>
-                    <div class="stats-number secondary-text">500</div>
+                    <div class="stats-number secondary-text">{{ $registeredPets }}</div>
                     <div class="stats-caption">Registered Animals</div>
                 </div>
                 <div class="stats-content col-12 col-md-4 col-lg-4 col-xl-4" data-aos="flip-up">
                     <i class="fas fa-home stats-icon"></i>
-                    <div class="stats-number secondary-text">300</div>
+                    <div class="stats-number secondary-text">{{ $adoptedPets }}</div>
                     <div class="stats-caption">Adopted Pets</div>
                 </div>
                 <div class="stats-content col-12 col-md-4 col-lg-4 col-xl-4" data-aos="flip-up">
                     <i class="fas fa-heart stats-icon"></i>
-                    <div class="stats-number secondary-text">90</div>
+                    <div class="stats-number secondary-text">{{ $volunteers }}</div>
                     <div class="stats-caption">Volunteers</div>
                 </div>
             </div>

@@ -17,7 +17,7 @@
                         <img class="card-img-top card-img-style" src="{{ asset('img/donate.jpg') }}" alt="">
                         <div class="card-body">
                             <h5 class="card-title pet-info-header">Make a Donation</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p class="card-text">Make our shelter animals happy by giving presents through in-kind donations and monetary donations to continuosly support the needs of our pets.</p>
                             <a href="{{ route('donate.index') }}" class="btn btn-accent-color">Donate</a>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                         <img class="card-img-top card-img-style" src="{{ asset('img/volunteer.jpg') }}" alt="">
                         <div class="card-body">
                             <h5 class="card-title pet-info-header">Become a Volunteer</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p class="card-text">Work side by side with our organization and participate on the programs you want join to as this makes a huge impact in the lives of our animals at the shelter. </p>
                             <a href="{{ route('volunteer.index') }}" class="btn btn-accent-color">Volunteer</a>
                         </div>
                     </div>

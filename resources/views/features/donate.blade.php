@@ -53,7 +53,7 @@
                             </li>
                             <li class="list-group-item">
                                 <h6 class="accent-color font-weight-bold">Metrobank</h6>
-                                <p>Account Number:928-8-23458920-0</p>
+                                <p>Account Number: 928-8-23458920-0</p>
                             </li>
                         </ul>
                     </div>
